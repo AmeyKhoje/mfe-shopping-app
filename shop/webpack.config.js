@@ -71,6 +71,7 @@ module.exports = ({ mode } = { mode: 'production' }) => {
         remotes: {
           utilityFunctions:
             'utilityFunctions@http://localhost:3010/remoteEntry.js',
+          uiComponents: 'uiComponents@http://localhost:3011/remoteEntry.js',
         },
         exposes: {
           './ShopApp': './src/App.tsx',

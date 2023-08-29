@@ -80,11 +80,15 @@ module.exports = ({ mode } = { mode: 'production' }) => {
       new ModuleFederationPlugin({
         name: 'uiComponents',
         filename: 'remoteEntry.js',
-        remotes: {},
+        remotes: {
+          utilityFunctions:
+            'utilityFunctions@http://localhost:3010/remoteEntry.js',
+        },
         exposes: {
           './components': './src/components',
           './ChakraTheme': './src/chakra-config/ChakraTheme.ts',
           './pages': './src/pages',
+          './layouts': './src/layouts',
         },
         shared: {
           react: {

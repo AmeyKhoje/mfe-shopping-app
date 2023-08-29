@@ -1,3 +1,4 @@
+import { ReactElement } from 'react';
 import { Text } from '@chakra-ui/react';
 
 const Typography = ({
@@ -8,7 +9,7 @@ const Typography = ({
   bold,
 }: {
   mb: number;
-  children: string;
+  children: string | ReactElement;
   size: number;
   center: boolean;
   bold: number;

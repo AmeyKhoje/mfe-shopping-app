@@ -12,7 +12,7 @@ const HostRouter = () => {
         <Route path="/" element={<Outlet />}>
           <Route index element={<HomePage />} />
           <Route path="/auth/*" element={<RemoteOneApp />} />
-          <Route path="/remote-two/*" element={<RemoteTwoApp />} />
+          <Route path="/shop/*" element={<RemoteTwoApp />} />
         </Route>
       </Routes>
     </Suspense>

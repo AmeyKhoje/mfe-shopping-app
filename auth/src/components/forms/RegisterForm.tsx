@@ -5,6 +5,7 @@ import {
   FormFieldContainer,
   Typography,
 } from 'uiComponents/components';
+import { navigateToRemote } from 'utilityFunctions/helpers';
 import { registerFormFields } from './helpers';
 import { useNavigate } from 'react-router-dom';
 
@@ -13,6 +14,7 @@ const RegisterForm = () => {
   const navigate = useNavigate();
 
   const handleRegister = (data: any) => {
+    navigateToRemote('/shop');
     console.log(data);
   };
 

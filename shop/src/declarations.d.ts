@@ -18,3 +18,4 @@ declare module '*.png' {
 }
 
 declare module 'utilityFunctions/*';
+declare module 'uiComponents/*';
