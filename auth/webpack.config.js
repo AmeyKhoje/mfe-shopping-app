@@ -24,6 +24,9 @@ module.exports = ({ mode } = { mode: 'production' }) => {
       compress: true,
       historyApiFallback: true,
       static: './public',
+      headers: {
+        'Access-Control-Allow-Origin': '*',
+      },
     },
     module: {
       rules: [

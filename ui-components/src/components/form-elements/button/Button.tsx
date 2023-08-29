@@ -11,7 +11,7 @@ const FormButton = ({
   size = 'md',
 }: FormButtonType) => {
   const styles = useStyleConfig('FormButtonTheme', {
-    variant: 'SECONDARY',
+    variant: variant || 'SECONDARY',
     size,
   });
 

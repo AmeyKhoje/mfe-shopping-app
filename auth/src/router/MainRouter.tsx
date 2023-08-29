@@ -1,12 +1,12 @@
 import { Routes, Route } from 'react-router-dom';
 import Login from 'src/pages/Login';
-import PageOne from 'src/pages/PageOne';
+import Register from 'src/pages/Register';
 
 const MainRouter = () => {
   return (
     <Routes>
       <Route index element={<Login />} />
-      <Route path="/register" element={<div>Hello</div>} />
+      <Route path="/register" element={<Register />} />
     </Routes>
   );
 };

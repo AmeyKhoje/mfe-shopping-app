@@ -16,7 +16,7 @@ const Typography = ({
   return (
     <Text
       mb={`${mb}rem`}
-      fontFamily={'main'}
+      fontFamily={`'Rubik', sans-serif`}
       fontSize={`${size * 1.2}rem`}
       textAlign={center ? 'center' : 'inherit'}
       fontWeight={bold * 100}

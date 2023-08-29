@@ -1,3 +1,4 @@
+import { useNavigate } from 'react-router-dom';
 import {
   FormButton,
   FormInput,
@@ -6,6 +7,10 @@ import {
 } from 'uiComponents/components';
 
 const LoginForm = () => {
+  const navigate = useNavigate();
+
+  const goToRegister = () => navigate('/auth/register');
+
   return (
     <>
       <Typography size={3.5} mb={3} center bold={5}>
@@ -25,6 +30,9 @@ const LoginForm = () => {
       </FormFieldContainer>
       <FormFieldContainer center>
         <FormButton title="Login" />
+      </FormFieldContainer>
+      <FormFieldContainer center>
+        <FormButton title="Register" variant={'LIGHT'} onClick={goToRegister} />
       </FormFieldContainer>
     </>
   );
