@@ -20,8 +20,8 @@ export default defineStyleConfig({
       padding: '0.7rem 1rem',
     },
     md: {
-      fontSize: '1.6rem',
-      padding: '1.1rem 2rem',
+      fontSize: '1.8rem',
+      padding: '1.3rem 2.2rem',
     },
     xl: {
       fontSize: '2rem',

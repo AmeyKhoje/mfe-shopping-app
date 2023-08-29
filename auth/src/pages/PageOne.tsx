@@ -1,5 +1,5 @@
 import { useNavigate } from 'react-router-dom';
-// import { navigateToRemote } from 'utility-remote/helpers';
+// import { navigateToRemote } from 'utilityFunctions/helpers';
 import { FormButton, FormInput, LoginCard } from 'uiComponents/components';
 
 const PageOne = () => {

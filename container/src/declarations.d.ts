@@ -17,6 +17,5 @@ declare module '*.png' {
   export default src;
 }
 
-declare module 'remoteOne/*';
-declare module 'remoteTwo/*'
-
+declare module 'auth/*';
+declare module 'shop/*';

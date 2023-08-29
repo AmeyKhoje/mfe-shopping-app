@@ -12,6 +12,7 @@ module.exports = ({ mode } = { mode: 'production' }) => {
     output: {
       path: path.resolve(__dirname, './dist'),
       filename: `[name].[hash].js?v=${new Date().valueOf()}`,
+      publicPath: 'http://localhost:3001/',
     },
     devServer: {
       static: {
@@ -77,7 +78,7 @@ module.exports = ({ mode } = { mode: 'production' }) => {
           uiComponents: 'uiComponents@http://localhost:3011/remoteEntry.js',
         },
         exposes: {
-          './RemoteApp': './src/App.tsx',
+          './AuthApp': './src/App.tsx',
         },
         shared: {
           react: {

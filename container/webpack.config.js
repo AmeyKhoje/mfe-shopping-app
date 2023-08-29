@@ -1,9 +1,9 @@
 const path = require('path');
 const TerserPlugin = require('terser-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const ModuleFederationPlugin = require('webpack/lib/container/ModuleFederationPlugin')
+const ModuleFederationPlugin = require('webpack/lib/container/ModuleFederationPlugin');
 
-const packageJson = require('./package.json')
+const packageJson = require('./package.json');
 
 module.exports = ({ mode } = { mode: 'production' }) => {
   return {
@@ -12,6 +12,7 @@ module.exports = ({ mode } = { mode: 'production' }) => {
     output: {
       path: path.resolve(__dirname, './dist'),
       filename: `[name].[hash].js?v=${new Date().valueOf()}`,
+      publicPath: 'http://localhost:3000/',
     },
     devServer: {
       static: {
@@ -69,31 +70,31 @@ module.exports = ({ mode } = { mode: 'production' }) => {
         filename: 'remoteEntry.js',
         remotes: {
           auth: 'auth@http://localhost:3001/remoteEntry.js',
-          shop: 'shop@http://localhost:3002/remoteEntry.js'
+          shop: 'shop@http://localhost:3002/remoteEntry.js',
         },
         exposes: {},
         shared: {
           react: {
             requiredVersion: packageJson.dependencies.react,
             singleton: true,
-            eager: true
+            eager: true,
           },
           'react-dom': {
             requiredVersion: packageJson.dependencies['react-dom'],
             singleton: true,
-            eager: true
+            eager: true,
           },
           'react-router-dom': {
             requiredVersion: packageJson.dependencies['react-router-dom'],
             singleton: true,
-            eager: true
+            eager: true,
           },
           sass: {
             requiredVersion: packageJson.dependencies.sass,
             singleton: true,
-            eager: true
+            eager: true,
           },
-        }
+        },
       }),
       new HtmlWebpackPlugin({
         cache: true,

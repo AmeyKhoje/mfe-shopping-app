@@ -1,6 +1,6 @@
 import { useNavigate } from 'react-router-dom';
-import { useWindowDimension } from 'utility-remote/hooks';
-import { navigateToRemote } from 'utility-remote/helpers';
+import { useWindowDimension } from 'utilityFunctions/hooks';
+import { navigateToRemote } from 'utilityFunctions/helpers';
 
 const PageOne = () => {
   const navigate = useNavigate();

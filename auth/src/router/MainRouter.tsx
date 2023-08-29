@@ -6,6 +6,7 @@ const MainRouter = () => {
   return (
     <Routes>
       <Route index element={<Login />} />
+      <Route path="/register" element={<div>Hello</div>} />
     </Routes>
   );
 };

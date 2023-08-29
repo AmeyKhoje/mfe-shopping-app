@@ -17,5 +17,5 @@ declare module '*.png' {
   export default src;
 }
 
-declare module 'utility-remote/*';
+declare module 'utilityFunctions/*';
 declare module 'uiComponents/*';

@@ -7,8 +7,6 @@ import '@fontsource/rubik/600.css';
 import '@fontsource/rubik/400.css';
 
 const App = () => {
-  console.log(theme);
-
   return (
     <div>
       <MainRouter />

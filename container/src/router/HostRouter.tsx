@@ -2,8 +2,8 @@ import { Suspense, lazy } from 'react';
 import { Routes, Route, Outlet } from 'react-router-dom';
 import HomePage from 'src/pages/HomePage';
 
-const RemoteOneApp = lazy(() => import('remoteOne/RemoteApp'));
-const RemoteTwoApp = lazy(() => import('remoteTwo/RemoteApp2'));
+const RemoteOneApp = lazy(() => import('auth/AuthApp'));
+const RemoteTwoApp = lazy(() => import('shop/ShopApp'));
 
 const HostRouter = () => {
   return (
