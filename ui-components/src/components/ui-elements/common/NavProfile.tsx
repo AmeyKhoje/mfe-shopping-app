@@ -33,7 +33,7 @@ const NavProfile = () => {
                 <Typography
                   mb={0}
                   bold={5}
-                  size={2}
+                  size={1.5}
                   color={COLOR_PALETTE.PRIMARY}
                 >
                   Amey Khoje

@@ -11,6 +11,8 @@ const COLOR_PALETTE: any = {
   WHITE: '#FFFFFF',
   GREEN: '#52b788',
   YELLOW: '#fee440',
+  ACCENT_BLACK: '#d1d1d1',
+  ACCENT_BLACK_BORDER: '#a5a5a5',
 };
 
 const COLOR_NAMES = {

@@ -3,6 +3,7 @@ import FormButtonTheme from 'src/global/component-themes/FormButtonTheme';
 import FormInputTheme from 'src/global/component-themes/FormInputTheme';
 import LoginCardTheme from 'src/global/component-themes/LoginCardTheme';
 import NavProfileMenuTheme from 'src/global/component-themes/NavProfileMenuTheme';
+import ProductCardTheme from 'src/global/component-themes/ProductCardTheme';
 
 const theme = extendTheme({
   fonts: {
@@ -15,6 +16,7 @@ const theme = extendTheme({
     LoginCardTheme,
     Menu: NavProfileMenuTheme,
     NavProfileMenuTheme,
+    ProductCardTheme,
   },
 });
 

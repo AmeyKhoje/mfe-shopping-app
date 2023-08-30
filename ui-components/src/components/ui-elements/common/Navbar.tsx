@@ -59,6 +59,7 @@ const Navbar = ({
                 <Box
                   paddingRight={'2.5rem'}
                   _last={{ paddingRight: isProfile ? '1rem' : 0 }}
+                  key={link.name}
                 >
                   <NavLink
                     name={link?.name}
