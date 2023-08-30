@@ -7,6 +7,7 @@ import NavProfileMenuTheme from 'src/global/component-themes/NavProfileMenuTheme
 const theme = extendTheme({
   fonts: {
     main: `'Rubik', sans-serif`,
+    cinzel: `'Cinzel', serif`,
   },
   components: {
     FormButtonTheme,

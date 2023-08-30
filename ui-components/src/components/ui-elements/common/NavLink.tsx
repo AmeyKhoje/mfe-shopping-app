@@ -25,7 +25,9 @@ const NavLink = ({
       color={COLOR_PALETTE.WHITE}
       cursor={'pointer'}
       textDecoration={isUnderlined ? 'underline' : 'none'}
-      fontWeight={600}
+      fontWeight={500}
+      background={'none'}
+      _hover={{ background: 'none' }}
       letterSpacing={'0.1rem'}
     >
       {name}

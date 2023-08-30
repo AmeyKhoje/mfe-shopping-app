@@ -6,10 +6,11 @@ import withChakraThemeProvider from 'src/hoc/withChakraThemeProvider';
 const Typography = ({
   mb,
   children,
-  size,
+  size = 1,
   center,
-  bold,
-  color = COLOR_PALETTE.WHITE,
+  bold = 4,
+  color = COLOR_PALETTE.BLACK,
+  fontFamily = 'main',
 }: {
   mb?: number;
   children: string | ReactElement;
@@ -17,14 +18,15 @@ const Typography = ({
   center?: boolean;
   bold?: number;
   color?: string;
+  fontFamily?: 'main' | 'cinzel';
 }) => {
   return (
     <Text
       mb={`${mb}rem`}
-      fontFamily={`'Rubik', sans-serif`}
-      fontSize={`${size || 1 * 1.2}rem`}
+      fontFamily={fontFamily}
+      fontSize={`${size * 1.2}rem`}
       textAlign={center ? 'center' : 'inherit'}
-      fontWeight={bold || 4 * 100}
+      fontWeight={bold * 100}
       color={color}
     >
       {children}

@@ -32,7 +32,7 @@ const NavProfile = () => {
                 />
                 <Typography
                   mb={0}
-                  bold={6}
+                  bold={5}
                   size={2}
                   color={COLOR_PALETTE.PRIMARY}
                 >

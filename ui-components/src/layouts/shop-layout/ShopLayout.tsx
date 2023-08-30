@@ -1,4 +1,4 @@
-import { Container } from '@chakra-ui/react';
+import { Box, Container } from '@chakra-ui/react';
 import { Outlet } from 'react-router-dom';
 import Navbar from 'src/components/ui-elements/common/Navbar';
 
@@ -10,7 +10,9 @@ const ShopLayout = ({
   return (
     <Container>
       <Navbar navbarLinks={navbarLinks} />
-      <Outlet />
+      <Box paddingTop={'8rem'}>
+        <Outlet />
+      </Box>
     </Container>
   );
 };

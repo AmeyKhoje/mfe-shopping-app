@@ -10,6 +10,8 @@ import Logo from 'src/images/logo-shop-easy.png';
 import { COLOR_PALETTE } from 'src/global/js-constants/Theme';
 import NavLink from './NavLink';
 import NavProfile from './NavProfile';
+import Typography from './Typography';
+import withChakraThemeProvider from 'src/hoc/withChakraThemeProvider';
 
 const Navbar = ({
   navbarLinks,
@@ -34,6 +36,7 @@ const Navbar = ({
         alignItems={'center'}
         width={'100%'}
         boxSizing={'border-box'}
+        maxWidth={'100%'}
       >
         <Flex
           justifyContent={'space-between'}
@@ -41,7 +44,14 @@ const Navbar = ({
           width={'100%'}
         >
           <Box height={'5rem'} width={'auto'}>
-            <Image src={Logo} width={'auto'} height={'100%'} />
+            <Typography
+              fontFamily={'cinzel'}
+              size={3}
+              color={COLOR_PALETTE.LIGHT}
+              bold={6}
+            >
+              ShopEasy
+            </Typography>
           </Box>
           <Box>
             <Flex alignItems={'center'}>
@@ -71,4 +81,4 @@ const Navbar = ({
   );
 };
 
-export default Navbar;
+export default withChakraThemeProvider(Navbar);

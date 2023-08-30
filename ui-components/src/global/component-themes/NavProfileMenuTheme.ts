@@ -21,6 +21,7 @@ const baseStyle = definePartsStyle({
     boxShadow: 'none',
     border: 'none',
     borderRadius: '0.5rem',
+    fontWeight: 500,
   },
   command: {},
   divider: {},
@@ -35,12 +36,13 @@ const baseStyle = definePartsStyle({
     cursor: 'pointer',
     transition: 'all 0.3s',
     fontSize: '2rem',
+    fontWeight: '500',
     _hover: {
       backgroundColor: COLOR_PALETTE.WHITE,
     },
   },
   list: {
-    minWidth: '17rem',
+    minWidth: '20rem',
     borderRadius: '0.5rem',
     backgroundColor: COLOR_PALETTE.LIGHT,
     padding: '0.8rem 0',

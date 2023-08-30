@@ -49,6 +49,10 @@ module.exports = ({ mode } = { mode: 'production' }) => {
           ],
         },
         {
+          test: /\.css$/i,
+          use: ['style-loader', 'css-loader', 'sass-loader'],
+        },
+        {
           test: /\.(png|svg|jp?g|gif)$/,
           use: {
             loader: 'file-loader',
