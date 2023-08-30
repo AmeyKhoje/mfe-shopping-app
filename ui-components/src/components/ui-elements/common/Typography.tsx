@@ -1,5 +1,7 @@
 import { ReactElement } from 'react';
 import { Text } from '@chakra-ui/react';
+import { COLOR_PALETTE } from 'src/global/js-constants/Theme';
+import withChakraThemeProvider from 'src/hoc/withChakraThemeProvider';
 
 const Typography = ({
   mb,
@@ -7,24 +9,27 @@ const Typography = ({
   size,
   center,
   bold,
+  color = COLOR_PALETTE.WHITE,
 }: {
-  mb: number;
+  mb?: number;
   children: string | ReactElement;
-  size: number;
-  center: boolean;
-  bold: number;
+  size?: number;
+  center?: boolean;
+  bold?: number;
+  color?: string;
 }) => {
   return (
     <Text
       mb={`${mb}rem`}
       fontFamily={`'Rubik', sans-serif`}
-      fontSize={`${size * 1.2}rem`}
+      fontSize={`${size || 1 * 1.2}rem`}
       textAlign={center ? 'center' : 'inherit'}
-      fontWeight={bold * 100}
+      fontWeight={bold || 4 * 100}
+      color={color}
     >
       {children}
     </Text>
   );
 };
 
-export default Typography;
+export default withChakraThemeProvider(Typography);

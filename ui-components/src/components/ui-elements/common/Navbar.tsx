@@ -7,14 +7,17 @@ import {
   SimpleGrid,
 } from '@chakra-ui/react';
 import Logo from 'src/images/logo-shop-easy.png';
-import Typography from './Typography';
-import { navigateToRemote } from 'utilityFunctions/helpers';
 import { COLOR_PALETTE } from 'src/global/js-constants/Theme';
+import NavLink from './NavLink';
+import NavProfile from './NavProfile';
 
-const Navbar = () => {
-  const navigate = (path: string) => {
-    navigateToRemote(path);
-  };
+const Navbar = ({
+  navbarLinks,
+  isProfile = true,
+}: {
+  navbarLinks: Array<{ name: string; to: string }>;
+  isProfile?: boolean;
+}) => {
   return (
     <Box
       position={'fixed'}
@@ -41,14 +44,26 @@ const Navbar = () => {
             <Image src={Logo} width={'auto'} height={'100%'} />
           </Box>
           <Box>
-            <SimpleGrid columns={2} spacing={'2rem'}>
+            <Flex alignItems={'center'}>
+              {navbarLinks?.map((link) => (
+                <Box
+                  paddingRight={'2.5rem'}
+                  _last={{ paddingRight: isProfile ? '1rem' : 0 }}
+                >
+                  <NavLink
+                    name={link?.name}
+                    to={link?.to}
+                    styleProps={{
+                      fontSize: '2.2rem',
+                      fontFamily: `'Rubik', sans-serif`,
+                    }}
+                  />
+                </Box>
+              ))}
               <Box>
-                <Typography mb={0} bold={5} center={false} size={1}>
-                  <Link onClick={() => navigate('cart')}>Cart</Link>
-                </Typography>
+                <NavProfile />
               </Box>
-              <Box>User</Box>
-            </SimpleGrid>
+            </Flex>
           </Box>
         </Flex>
       </Container>
