@@ -5,6 +5,8 @@ import FormFieldContainer from './ui-elements/common/FormFieldContainer';
 import Typography from './ui-elements/common/Typography';
 
 import ProductCard from './ui-elements/shop/product-card/ProductCard';
+import Toast from './ui-elements/common/Toast';
+import { useToast } from '@chakra-ui/react';
 
 export {
   FormButton,
@@ -13,4 +15,6 @@ export {
   FormFieldContainer,
   Typography,
   ProductCard,
+  Toast,
+  useToast,
 };

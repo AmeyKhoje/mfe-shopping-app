@@ -5,6 +5,7 @@ import {
   Image,
   Text,
   useMultiStyleConfig,
+  Toast,
 } from '@chakra-ui/react';
 import { COLOR_PALETTE } from 'src/global/js-constants/Theme';
 import withChakraThemeProvider from 'src/hoc/withChakraThemeProvider';

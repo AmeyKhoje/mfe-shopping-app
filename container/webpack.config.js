@@ -76,6 +76,8 @@ module.exports = ({ mode } = { mode: 'production' }) => {
         remotes: {
           auth: 'auth@http://localhost:3001/remoteEntry.js',
           shop: 'shop@http://localhost:3002/remoteEntry.js',
+          utilityFunctions:
+            'utilityFunctions@http://localhost:3010/remoteEntry.js',
         },
         exposes: {},
         shared: {

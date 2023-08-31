@@ -1,9 +1,9 @@
 const path = require('path');
 const TerserPlugin = require('terser-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const ModuleFederationPlugin = require('webpack/lib/container/ModuleFederationPlugin')
+const ModuleFederationPlugin = require('webpack/lib/container/ModuleFederationPlugin');
 
-const packageJson = require('./package.json')
+const packageJson = require('./package.json');
 
 module.exports = ({ mode } = { mode: 'production' }) => {
   return {
@@ -70,30 +70,31 @@ module.exports = ({ mode } = { mode: 'production' }) => {
         remotes: {},
         exposes: {
           './helpers': './src/helpers/index.ts',
-          './hooks': './src/hooks/index.ts'
+          './hooks': './src/hooks/index.ts',
+          './constants': './src/constants/index.ts',
         },
         shared: {
           react: {
             requiredVersion: packageJson.dependencies.react,
             singleton: true,
-            eager: true
+            eager: true,
           },
           'react-dom': {
             requiredVersion: packageJson.dependencies['react-dom'],
             singleton: true,
-            eager: true
+            eager: true,
           },
           'react-router-dom': {
             requiredVersion: packageJson.dependencies['react-router-dom'],
             singleton: true,
-            eager: true
+            eager: true,
           },
           sass: {
             requiredVersion: packageJson.dependencies.sass,
             singleton: true,
-            eager: true
+            eager: true,
           },
-        }
+        },
       }),
       new HtmlWebpackPlugin({
         cache: true,

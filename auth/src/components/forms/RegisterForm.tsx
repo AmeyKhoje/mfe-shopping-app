@@ -5,10 +5,11 @@ import {
   FormFieldContainer,
   Typography,
 } from 'uiComponents/components';
-import { navigateToRemote } from 'utilityFunctions/helpers';
+import { Events } from 'utilityFunctions/constants';
 import { registerFormFields } from './helpers';
 import { useNavigate } from 'react-router-dom';
 import { createUser } from 'src/firebase/FirebaseHelpers';
+import { dispatchEvent, registerEvent } from 'src/custom-event/CustomEvent';
 
 const RegisterForm = () => {
   const { control, handleSubmit } = useForm();
@@ -16,7 +17,6 @@ const RegisterForm = () => {
 
   const handleRegister = async (data: any) => {
     await createUser(data);
-    navigateToRemote('/shop');
   };
 
   const goToLogin = () => navigate('/auth');
