@@ -8,14 +8,15 @@ import {
 import { navigateToRemote } from 'utilityFunctions/helpers';
 import { registerFormFields } from './helpers';
 import { useNavigate } from 'react-router-dom';
+import { createUser } from 'src/firebase/FirebaseHelpers';
 
 const RegisterForm = () => {
   const { control, handleSubmit } = useForm();
   const navigate = useNavigate();
 
-  const handleRegister = (data: any) => {
+  const handleRegister = async (data: any) => {
+    await createUser(data);
     navigateToRemote('/shop');
-    console.log(data);
   };
 
   const goToLogin = () => navigate('/auth');

@@ -2,8 +2,9 @@ const path = require('path');
 const TerserPlugin = require('terser-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ModuleFederationPlugin = require('webpack/lib/container/ModuleFederationPlugin');
-
 const packageJson = require('./package.json');
+const DotenvWebpackPlugin = require('dotenv-webpack');
+const webpack = require('webpack');
 
 module.exports = ({ mode } = { mode: 'production' }) => {
   return {
@@ -105,6 +106,12 @@ module.exports = ({ mode } = { mode: 'production' }) => {
         chunks: true,
         filename: 'index.html',
         template: path.resolve(__dirname, 'public', 'index.html'),
+      }),
+      new webpack.ProvidePlugin({
+        process: 'process/browser',
+      }),
+      new DotenvWebpackPlugin({
+        path: './.env',
       }),
     ],
     optimization: {
