@@ -28,22 +28,27 @@ export const createUser = async (user: {
       authProvider: 'local',
       ...user,
     });
-    console.log('here');
-
-    const event = registerEvent(Events.USER_CREATE.SUCCESS, { success: true });
-    dispatchEvent(event);
+    const successEvent = registerEvent(Events.USER_CREATE.SUCCESS, {
+      success: true,
+    });
+    dispatchEvent(successEvent);
   } catch (error) {
-    console.error(error);
+    const errorEvent = registerEvent(Events.USER_CREATE.ERROR, {
+      success: false,
+    });
+    dispatchEvent(errorEvent);
   }
 };
 
 export const login = async (email: string, password: string) => {
   try {
     await signInWithEmailAndPassword(auth, email, password);
-    const event = registerEvent(Events.LOGIN.SUCCESS, { success: true });
-    dispatchEvent(event);
+    const successEvent = registerEvent(Events.LOGIN.SUCCESS, { success: true });
+    dispatchEvent(successEvent);
     addToLocalStorage(LocalStorageKeys.IS_LOGGED_IN, true);
   } catch (error) {
+    const errorEvent = registerEvent(Events.LOGIN.SUCCESS, { success: true });
+    dispatchEvent(errorEvent);
     console.error(error);
   }
 };
