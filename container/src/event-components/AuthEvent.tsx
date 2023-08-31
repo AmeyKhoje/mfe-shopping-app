@@ -1,8 +1,11 @@
 import { memo, useEffect } from 'react';
 import toast from 'react-hot-toast';
 import { Events } from 'utilityFunctions/constants';
+import { setLoggedIn } from 'src/store/slices/AuthSlice';
+import { useCustomDispatch } from 'src/store';
 
 const AuthEvent = memo(() => {
+  const dispatch = useCustomDispatch();
   useEffect(() => {
     window.addEventListener(
       Events.USER_CREATE.SUCCESS,
@@ -35,6 +38,7 @@ const AuthEvent = memo(() => {
           duration: 3000,
           position: 'top-center',
         });
+        dispatch(setLoggedIn(true));
       }
     );
 

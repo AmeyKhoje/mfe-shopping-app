@@ -1,5 +1,4 @@
 import AuthEvent from 'src/event-components/AuthEvent';
-
 const EventHOC = (Component: any) => {
   const NewComponent = (props: any) => {
     return (
