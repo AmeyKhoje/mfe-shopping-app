@@ -1,6 +1,5 @@
 import { Suspense, lazy } from 'react';
 import { Routes, Route, Outlet, Navigate } from 'react-router-dom';
-import HomePage from 'src/pages/HomePage';
 import { useTypedSelector } from 'src/store';
 
 const RemoteOneApp = lazy(() => import('auth/AuthApp'));

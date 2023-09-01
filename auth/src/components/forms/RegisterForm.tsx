@@ -5,18 +5,21 @@ import {
   FormFieldContainer,
   Typography,
 } from 'uiComponents/components';
-import { Events } from 'utilityFunctions/constants';
 import { registerFormFields } from './helpers';
 import { useNavigate } from 'react-router-dom';
 import { createUser } from 'src/firebase/FirebaseHelpers';
-import { dispatchEvent, registerEvent } from 'src/custom-event/CustomEvent';
+import ApiResponseModel from 'src/models/ApiResponseModel';
 
 const RegisterForm = () => {
   const { control, handleSubmit } = useForm();
   const navigate = useNavigate();
 
-  const handleRegister = async (data: any) => {
-    await createUser(data);
+  const handleRegister = (data: any) => {
+    createUser(data).then((response: ApiResponseModel) => {
+      if (!!response.status) {
+        navigate('/auth');
+      }
+    });
   };
 
   const goToLogin = () => navigate('/auth');
