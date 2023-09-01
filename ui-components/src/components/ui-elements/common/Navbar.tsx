@@ -16,9 +16,11 @@ import withChakraThemeProvider from 'src/hoc/withChakraThemeProvider';
 const Navbar = ({
   navbarLinks,
   isProfile = true,
+  onLogout,
 }: {
   navbarLinks: Array<{ name: string; to: string }>;
   isProfile?: boolean;
+  onLogout: () => void;
 }) => {
   return (
     <Box
@@ -72,7 +74,7 @@ const Navbar = ({
                 </Box>
               ))}
               <Box>
-                <NavProfile />
+                <NavProfile onLogout={onLogout} />
               </Box>
             </Flex>
           </Box>

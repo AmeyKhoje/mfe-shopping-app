@@ -4,6 +4,7 @@ const UTILITY = {
   SUCCESS: 'SUCCESS',
   ERROR: 'ERROR',
   LOGIN: 'LOGIN',
+  LOGOUT: 'LOGOUT',
 };
 
 export default {
@@ -15,4 +16,5 @@ export default {
     SUCCESS: `${UTILITY.USER}_${UTILITY.LOGIN}_${UTILITY.SUCCESS}`,
     ERROR: `${UTILITY.USER}_${UTILITY.LOGIN}_${UTILITY.ERROR}`,
   },
+  LOGOUT: `${UTILITY.USER}_${UTILITY.LOGOUT}`,
 };

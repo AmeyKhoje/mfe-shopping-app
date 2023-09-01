@@ -1,18 +1,28 @@
 import { Controller, useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
-import UserModel from 'src/models/User';
+import { login } from 'src/firebase/FirebaseHelpers';
+import ApiResponseModel from 'src/models/ApiResponseModel';
 import {
   FormButton,
   FormInput,
   FormFieldContainer,
   Typography,
 } from 'uiComponents/components';
+import { navigateToRemote } from 'utilityFunctions/helpers';
 
 const LoginForm = () => {
   const { control, handleSubmit } = useForm();
   const navigate = useNavigate();
 
-  const handleLogin = (data: any) => {};
+  const handleLogin = async (data: any) => {
+    login(data?.email, data?.password)
+      .then((response: ApiResponseModel) => {
+        if (!!response.status) {
+          navigateToRemote('/shop');
+        }
+      })
+      .catch((error) => {});
+  };
 
   const goToRegister = () => navigate('/auth/register');
 

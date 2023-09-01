@@ -3,6 +3,11 @@ import toast from 'react-hot-toast';
 import { Events } from 'utilityFunctions/constants';
 import { setLoggedIn } from 'src/store/slices/AuthSlice';
 import { useCustomDispatch } from 'src/store';
+import {
+  navigateToRemote,
+  remoteFromLocalStorage,
+} from 'utilityFunctions/helpers';
+import { LocalStorageKeys } from 'utilityFunctions/constants';
 
 const AuthEvent = memo(() => {
   const dispatch = useCustomDispatch();
@@ -57,11 +62,22 @@ const AuthEvent = memo(() => {
       }
     );
 
+    window.addEventListener(
+      Events.LOGOUT,
+      function handler(event: CustomEvent) {
+        event.stopImmediatePropagation();
+        dispatch(setLoggedIn(true));
+        remoteFromLocalStorage(LocalStorageKeys.IS_LOGGED_IN);
+        navigateToRemote('/auth');
+      }
+    );
+
     return () => {
       window.removeEventListener(Events.USER_CREATE.SUCCESS, () => {});
       window.removeEventListener(Events.USER_CREATE.ERROR, () => {});
       window.removeEventListener(Events.LOGIN.SUCCESS, () => {});
       window.removeEventListener(Events.LOGIN.ERROR, () => {});
+      window.removeEventListener(Events.LOGOUT, () => {});
     };
   }, []);
 

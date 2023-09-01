@@ -13,7 +13,7 @@ import Typography from './Typography';
 import { COLOR_PALETTE } from 'src/global/js-constants/Theme';
 import withChakraThemeProvider from 'src/hoc/withChakraThemeProvider';
 
-const NavProfile = () => {
+const NavProfile = ({ onLogout }: { onLogout: () => void }) => {
   const styles = useMultiStyleConfig('NavProfileMenuTheme');
 
   return (
@@ -49,7 +49,9 @@ const NavProfile = () => {
             </MenuButton>
             <MenuList __css={styles.list}>
               <MenuItem __css={styles.item}>Profile</MenuItem>
-              <MenuItem __css={styles.item}>Logout</MenuItem>
+              <MenuItem __css={styles.item} onClick={onLogout}>
+                Logout
+              </MenuItem>
             </MenuList>
           </>
         )}

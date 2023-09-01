@@ -8,7 +8,6 @@ const DotEnv = require('dotenv-webpack');
 const packageJson = require('./package.json');
 
 module.exports = ({ mode, ...rest } = { mode: 'production' }) => {
-  console.log(rest);
   return {
     mode,
     entry: './src/index.tsx',
