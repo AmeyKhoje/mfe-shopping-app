@@ -110,7 +110,7 @@ export const login = (email: string, password: string) =>
         } else {
           const apiResponse = new ApiResponse(false, 'Failed to login');
           reject(<ApiResponseModel>apiResponse.getObject());
-          const errorEvent = registerEvent(Events.LOGIN.SUCCESS, {
+          const errorEvent = registerEvent(Events.LOGIN.ERROR, {
             success: true,
           });
           dispatchEvent(errorEvent);
@@ -119,7 +119,7 @@ export const login = (email: string, password: string) =>
       .catch((error) => {
         const apiResponse = new ApiResponse(false, 'Failed to login');
         reject(<ApiResponseModel>apiResponse.getObject());
-        const errorEvent = registerEvent(Events.LOGIN.SUCCESS, {
+        const errorEvent = registerEvent(Events.LOGIN.ERROR, {
           success: true,
         });
         dispatchEvent(errorEvent);

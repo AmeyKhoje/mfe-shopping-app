@@ -20,3 +20,4 @@ declare module '*.png' {
 declare module 'auth/*';
 declare module 'shop/*';
 declare module 'utilityFunctions/*';
+declare module 'uiComponents/*';

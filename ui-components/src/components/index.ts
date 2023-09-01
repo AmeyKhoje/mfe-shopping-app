@@ -8,6 +8,8 @@ import ProductCard from './ui-elements/shop/product-card/ProductCard';
 import Toast from './ui-elements/common/Toast';
 import { useToast } from '@chakra-ui/react';
 
+import AppLoadingFallback from './fallbacks/AppLoadingFallback';
+
 export {
   FormButton,
   FormInput,
@@ -17,4 +19,5 @@ export {
   ProductCard,
   Toast,
   useToast,
+  AppLoadingFallback,
 };

@@ -6,9 +6,10 @@ import { registerEvent } from './custom-events/CustomEvent';
 
 const App = () => {
   auth.onAuthStateChanged((user) => {
-    console.log(user?.uid);
-    const logoutEvent = registerEvent(Events.LOGOUT, {});
-    dispatchEvent(logoutEvent);
+    if (!user?.uid) {
+      const logoutEvent = registerEvent(Events.LOGOUT, {});
+      dispatchEvent(logoutEvent);
+    }
   });
   return (
     <div>
