@@ -1,4 +1,5 @@
 import { Container, Flex, SimpleGrid } from '@chakra-ui/react';
+import { FloatingActionButton } from 'src/components';
 import ProductCard from 'src/components/ui-elements/shop/product-card/ProductCard';
 
 const ShopHome = () => {
@@ -65,8 +66,21 @@ const ShopHome = () => {
           discountedPrice={220}
           originalPrice={260}
         />
+        <ProductCard
+          imagePath={''}
+          title={'Nikon 350D'}
+          discountedPrice={220}
+          originalPrice={260}
+        />
+        <ProductCard
+          imagePath={''}
+          title={'Nikon 350D'}
+          discountedPrice={220}
+          originalPrice={260}
+        />
       </SimpleGrid>
       <Flex alignItems={'flex-start'} flexWrap={'wrap'}></Flex>
+      <FloatingActionButton ariaLabel="add-product" />
     </Container>
   );
 };

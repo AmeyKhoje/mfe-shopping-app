@@ -9,6 +9,7 @@ import Toast from './ui-elements/common/Toast';
 import { useToast } from '@chakra-ui/react';
 
 import AppLoadingFallback from './fallbacks/AppLoadingFallback';
+import FloatingActionButton from './ui-elements/fab/FloatingActionButton';
 
 export {
   FormButton,
@@ -20,4 +21,5 @@ export {
   Toast,
   useToast,
   AppLoadingFallback,
+  FloatingActionButton,
 };
