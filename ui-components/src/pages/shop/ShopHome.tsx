@@ -1,31 +1,68 @@
 import { Container, Flex, SimpleGrid } from '@chakra-ui/react';
-import { ProductCard } from 'src/components';
+import ProductCard from 'src/components/ui-elements/shop/product-card/ProductCard';
 
 const ShopHome = () => {
+  const action = (id: string, count: number) => {
+    console.log(id, count);
+  };
   return (
     <Container padding={'5rem'}>
-      <SimpleGrid columns={5} spacing={'1rem'}>
-        <ProductCard />
-        <ProductCard />
-        <ProductCard />
-        <ProductCard />
-        <ProductCard />
-        <ProductCard />
-        <ProductCard />
-        <ProductCard />
-        <ProductCard />
-        <ProductCard />
-        <ProductCard />
-        <ProductCard />
-        <ProductCard />
-        <ProductCard />
-        <ProductCard />
-        <ProductCard />
-        <ProductCard />
-        <ProductCard />
-        <ProductCard />
-        <ProductCard />
-        <ProductCard />
+      <SimpleGrid columns={5} spacing={'2rem'}>
+        <ProductCard
+          imgPath={''}
+          title={'Nikon 350D'}
+          discountedPrice={220}
+          originalPrice={260}
+          actionHandler={action}
+        />
+        <ProductCard
+          imgPath={''}
+          title={'Nikon 350D'}
+          discountedPrice={220}
+          originalPrice={260}
+        />
+        <ProductCard
+          imgPath={''}
+          title={'Nikon 350D'}
+          discountedPrice={220}
+          originalPrice={260}
+        />
+        <ProductCard
+          imgPath={''}
+          title={'Nikon 350D'}
+          discountedPrice={220}
+          originalPrice={260}
+        />
+        <ProductCard
+          imgPath={''}
+          title={'Nikon 350D'}
+          discountedPrice={220}
+          originalPrice={260}
+        />
+        <ProductCard
+          imgPath={''}
+          title={'Nikon 350D'}
+          discountedPrice={220}
+          originalPrice={260}
+        />
+        <ProductCard
+          imgPath={''}
+          title={'Nikon 350D'}
+          discountedPrice={220}
+          originalPrice={260}
+        />
+        <ProductCard
+          imgPath={''}
+          title={'Nikon 350D'}
+          discountedPrice={220}
+          originalPrice={260}
+        />
+        <ProductCard
+          imgPath={''}
+          title={'Nikon 350D'}
+          discountedPrice={220}
+          originalPrice={260}
+        />
       </SimpleGrid>
       <Flex alignItems={'flex-start'} flexWrap={'wrap'}></Flex>
     </Container>

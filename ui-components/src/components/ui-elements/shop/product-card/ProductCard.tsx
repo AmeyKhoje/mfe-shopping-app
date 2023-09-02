@@ -1,49 +1,70 @@
-import { Box, Flex, Image, Text, useMultiStyleConfig } from '@chakra-ui/react';
-import { COLOR_PALETTE } from 'src/global/js-constants/Theme';
 import withChakraThemeProvider from 'src/hoc/withChakraThemeProvider';
-import ProductImage from 'src/images/product2.jpg';
-import Typography from '../../common/Typography';
-import CounterButton from '../../common/CounterButton';
+import ProductCardInner from './ProductCardInner';
+import { memo, useCallback, useMemo } from 'react';
+import productCardContext from 'src/contexts/ProductCardContext';
 
-const ProductCard = () => {
-  const styles = useMultiStyleConfig('ProductCardTheme');
+interface SelfProps {
+  imagePath: string;
+  title: string;
+  discountedPrice: number | string;
+  originalPrice: number | string;
+  count: number;
+  id: string;
+  actionHandler: Function;
+}
 
-  return (
-    <Box __css={styles.container}>
-      <Box __css={styles.imageContainer}>
-        <Image src={ProductImage} __css={styles.image} />
-      </Box>
-      <Box __css={styles.inner}>
-        <Flex>
-          <Text
-            fontSize={'2rem'}
-            fontFamily={'main'}
-            fontWeight={400}
-            mr={'1rem'}
-          >
-            $0.80
-          </Text>
-          <Text
-            fontSize={'1.8rem'}
-            fontFamily={'main'}
-            fontWeight={400}
-            textDecoration={'line-through'}
-            color={COLOR_PALETTE.SECONDARY}
-          >
-            $0.95
-          </Text>
-        </Flex>
-        <Box mt={'1.5rem'}>
-          <Typography size={2.3} bold={500}>
-            Nikon 22.0.5
-          </Typography>
-        </Box>
-        <Box pt={'1.8rem'}>
-          <CounterButton title={'Buy now'} />
-        </Box>
-      </Box>
-    </Box>
-  );
-};
+const ProductCard = memo(
+  ({
+    discountedPrice,
+    imagePath,
+    originalPrice,
+    title,
+    count,
+    id,
+    actionHandler,
+  }: SelfProps) => {
+    const memoizedDiscountedPrice = useMemo(() => {
+      return discountedPrice;
+    }, [discountedPrice]);
+
+    const memoizedOriginalPrice = useMemo(() => {
+      return originalPrice;
+    }, [originalPrice]);
+
+    const memoizedImagePath = useMemo(() => {
+      return imagePath;
+    }, [imagePath]);
+
+    const memoizedTitle = useMemo(() => {
+      return title;
+    }, [title]);
+
+    const memoizedCount = useMemo(() => {
+      return count;
+    }, [count]);
+
+    const actionHandlerInner = useCallback((id: string, count: number) => {
+      console.log('here', id, count);
+
+      actionHandler(id, count);
+    }, []);
+
+    return (
+      <productCardContext.Provider
+        value={{
+          count: memoizedCount,
+          imgPath: memoizedImagePath,
+          originalPrice: memoizedOriginalPrice,
+          title: memoizedTitle,
+          discountedPrice: memoizedDiscountedPrice,
+          id,
+          actionHandler: actionHandlerInner,
+        }}
+      >
+        <ProductCardInner />
+      </productCardContext.Provider>
+    );
+  }
+);
 
 export default withChakraThemeProvider(ProductCard);
