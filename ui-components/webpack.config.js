@@ -89,6 +89,7 @@ module.exports = ({ mode } = { mode: 'production' }) => {
           './ChakraTheme': './src/chakra-config/ChakraTheme.ts',
           './pages': './src/pages',
           './layouts': './src/layouts',
+          './security': './src/security',
         },
         shared: {
           react: {
