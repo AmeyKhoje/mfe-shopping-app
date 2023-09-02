@@ -9,56 +9,58 @@ const ShopHome = () => {
     <Container padding={'5rem'}>
       <SimpleGrid columns={5} spacing={'2rem'}>
         <ProductCard
-          imgPath={''}
+          imagePath={
+            'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRxLGdlGexTRDFsaNxBssWVNzQiKsb9Qy2big&usqp=CAU'
+          }
           title={'Nikon 350D'}
           discountedPrice={220}
           originalPrice={260}
           actionHandler={action}
         />
         <ProductCard
-          imgPath={''}
+          imagePath={''}
           title={'Nikon 350D'}
           discountedPrice={220}
           originalPrice={260}
         />
         <ProductCard
-          imgPath={''}
+          imagePath={''}
           title={'Nikon 350D'}
           discountedPrice={220}
           originalPrice={260}
         />
         <ProductCard
-          imgPath={''}
+          imagePath={''}
           title={'Nikon 350D'}
           discountedPrice={220}
           originalPrice={260}
         />
         <ProductCard
-          imgPath={''}
+          imagePath={''}
           title={'Nikon 350D'}
           discountedPrice={220}
           originalPrice={260}
         />
         <ProductCard
-          imgPath={''}
+          imagePath={''}
           title={'Nikon 350D'}
           discountedPrice={220}
           originalPrice={260}
         />
         <ProductCard
-          imgPath={''}
+          imagePath={''}
           title={'Nikon 350D'}
           discountedPrice={220}
           originalPrice={260}
         />
         <ProductCard
-          imgPath={''}
+          imagePath={''}
           title={'Nikon 350D'}
           discountedPrice={220}
           originalPrice={260}
         />
         <ProductCard
-          imgPath={''}
+          imagePath={''}
           title={'Nikon 350D'}
           discountedPrice={220}
           originalPrice={260}
