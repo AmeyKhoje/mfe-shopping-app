@@ -32,12 +32,12 @@ const baseStyle = definePartsStyle({
     },
   },
   container: {
-    width: 'calc(100%/5 - 2.3rem)',
+    width: '100%',
     borderRadius: '2.5rem',
     border: `0.08rem solid ${COLOR_PALETTE.ACCENT_BLACK}`,
     overflow: 'hidden',
-    marginRight: '2rem',
-    marginBottom: '4rem',
+    // marginRight: '2rem',
+    // marginBottom: '4rem',
   },
   discountPrice: {
     fontFamily: 'main',
@@ -46,8 +46,8 @@ const baseStyle = definePartsStyle({
     color: COLOR_PALETTE.SECONDARY,
   },
   image: {
-    height: 'auto',
     width: '100%',
+    maxHeight: '100%',
   },
   inner: {
     padding: '3.5rem 2rem',
@@ -60,9 +60,10 @@ const baseStyle = definePartsStyle({
   title: {},
   imageContainer: {
     width: '100%',
-    height: '100%',
+    height: '32rem',
     display: 'flex',
     alignItems: 'center',
+    justifyContent: 'center',
   },
 });
 

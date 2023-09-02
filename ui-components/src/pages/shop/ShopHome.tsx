@@ -4,7 +4,7 @@ import { ProductCard } from 'src/components';
 const ShopHome = () => {
   return (
     <Container padding={'5rem'}>
-      <Flex alignItems={'flex-start'} flexWrap={'wrap'}>
+      <SimpleGrid columns={5} spacing={'1rem'}>
         <ProductCard />
         <ProductCard />
         <ProductCard />
@@ -26,7 +26,8 @@ const ShopHome = () => {
         <ProductCard />
         <ProductCard />
         <ProductCard />
-      </Flex>
+      </SimpleGrid>
+      <Flex alignItems={'flex-start'} flexWrap={'wrap'}></Flex>
     </Container>
   );
 };

@@ -1,16 +1,9 @@
-import {
-  Box,
-  Button,
-  Flex,
-  Image,
-  Text,
-  useMultiStyleConfig,
-  Toast,
-} from '@chakra-ui/react';
+import { Box, Flex, Image, Text, useMultiStyleConfig } from '@chakra-ui/react';
 import { COLOR_PALETTE } from 'src/global/js-constants/Theme';
 import withChakraThemeProvider from 'src/hoc/withChakraThemeProvider';
 import ProductImage from 'src/images/product2.jpg';
 import Typography from '../../common/Typography';
+import CounterButton from '../../common/CounterButton';
 
 const ProductCard = () => {
   const styles = useMultiStyleConfig('ProductCardTheme');
@@ -46,7 +39,7 @@ const ProductCard = () => {
           </Typography>
         </Box>
         <Box pt={'1.8rem'}>
-          <Button __css={styles.button}>Buy Now</Button>
+          <CounterButton title={'Buy now'} />
         </Box>
       </Box>
     </Box>
