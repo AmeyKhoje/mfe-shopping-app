@@ -30,6 +30,7 @@ const Navbar = ({
       width={'100%'}
       height={'8rem'}
       backgroundColor={COLOR_PALETTE.PRIMARY}
+      zIndex={9}
     >
       <Container
         padding={'1rem 5rem'}
