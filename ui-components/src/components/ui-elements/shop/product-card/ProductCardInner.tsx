@@ -2,7 +2,6 @@ import { Box, useMultiStyleConfig } from '@chakra-ui/react';
 import ImageContainer from './ImageContainer';
 import PriceFlex from './PriceFlex';
 import ProductTitleBox from './ProductTitleBox';
-import CounterButton from '../../common/CounterButton';
 import withChakraThemeProvider from 'src/hoc/withChakraThemeProvider';
 import ActionBox from './ActionBox';
 

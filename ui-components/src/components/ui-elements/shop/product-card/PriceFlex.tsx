@@ -4,11 +4,6 @@ import productCardContext from 'src/contexts/ProductCardContext';
 import { COLOR_PALETTE } from 'src/global/js-constants/Theme';
 import withChakraThemeProvider from 'src/hoc/withChakraThemeProvider';
 
-interface SelfProps {
-  originalPrice: number | string;
-  discountedPrice: number | string;
-}
-
 const PriceFlex = memo(() => {
   const { originalPrice, discountedPrice } = useContext(productCardContext);
 
