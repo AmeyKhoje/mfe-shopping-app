@@ -5,6 +5,7 @@ import LoginCardTheme from 'src/global/component-themes/LoginCardTheme';
 import NavProfileMenuTheme from 'src/global/component-themes/NavProfileMenuTheme';
 import ProductCardTheme from 'src/global/component-themes/ProductCardTheme';
 import CounterCardTheme from 'src/global/component-themes/CounterCardTheme';
+import AppModalTheme from 'src/global/component-themes/AppModalTheme';
 
 const theme = extendTheme({
   fonts: {
@@ -19,6 +20,7 @@ const theme = extendTheme({
     NavProfileMenuTheme,
     ProductCardTheme,
     CounterCardTheme,
+    AppModalTheme,
   },
 });
 

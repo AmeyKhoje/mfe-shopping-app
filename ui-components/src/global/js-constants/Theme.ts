@@ -13,6 +13,7 @@ const COLOR_PALETTE: any = {
   YELLOW: '#fee440',
   ACCENT_BLACK: '#d1d1d1',
   ACCENT_BLACK_BORDER: '#a5a5a5',
+  ACCENT_BLACK_LIGHT: '#e7e7e7',
 };
 
 const COLOR_NAMES = {

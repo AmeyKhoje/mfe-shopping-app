@@ -1,5 +1,6 @@
 import { Container, Flex, SimpleGrid } from '@chakra-ui/react';
 import { FloatingActionButton } from 'src/components';
+import AppModal from 'src/components/ui-elements/app-modal/AppModal';
 import ProductCard from 'src/components/ui-elements/shop/product-card/ProductCard';
 
 const ShopHome = () => {
@@ -81,6 +82,12 @@ const ShopHome = () => {
       </SimpleGrid>
       <Flex alignItems={'flex-start'} flexWrap={'wrap'}></Flex>
       <FloatingActionButton ariaLabel="add-product" />
+      <AppModal
+        content={'Hello Amey'}
+        defaultOpen
+        isClosable
+        header={'Add Product'}
+      />
     </Container>
   );
 };
