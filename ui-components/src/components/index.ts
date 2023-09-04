@@ -10,6 +10,7 @@ import { useToast } from '@chakra-ui/react';
 
 import AppLoadingFallback from './fallbacks/AppLoadingFallback';
 import FloatingActionButton from './ui-elements/fab/FloatingActionButton';
+import AppModal from './ui-elements/app-modal/AppModal';
 
 export {
   FormButton,
@@ -22,4 +23,5 @@ export {
   useToast,
   AppLoadingFallback,
   FloatingActionButton,
+  AppModal,
 };

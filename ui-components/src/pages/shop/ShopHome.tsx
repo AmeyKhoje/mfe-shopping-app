@@ -84,18 +84,6 @@ const ShopHome = () => {
         />
       </SimpleGrid>
       <Flex alignItems={'flex-start'} flexWrap={'wrap'}></Flex>
-      <FloatingActionButton
-        ariaLabel="add-product"
-        onClick={() => setIsOpen(true)}
-      />
-      <AppModal
-        content={'Hello Amey'}
-        defaultOpen
-        isClosable
-        header={'Add Product'}
-        open={isOpen}
-        onClose={handleCloseAddProduct}
-      />
     </Container>
   );
 };
