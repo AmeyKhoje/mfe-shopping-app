@@ -18,7 +18,7 @@ const baseStyle = definePartsStyle({
     position: 'fixed',
     top: '10rem',
     left: '50%',
-    transform: 'translate(-50%, 0)',
+    transform: 'translate(-50%, -150vh)',
     minHeight: '10rem',
     backgroundColor: COLOR_PALETTE.LIGHT,
     zIndex: '90',
@@ -115,4 +115,13 @@ const baseStyle = definePartsStyle({
   },
 });
 
-export default defineMultiStyleConfig({ baseStyle });
+export default defineMultiStyleConfig({
+  baseStyle,
+  variants: {
+    open: {
+      modal: {
+        transform: 'translate(-50%, 0)',
+      },
+    },
+  },
+});

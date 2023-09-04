@@ -1,5 +1,6 @@
 import { AddIcon } from '@chakra-ui/icons';
 import { IconButton } from '@chakra-ui/react';
+import { MouseEventHandler } from 'react';
 import { COLOR_PALETTE } from 'src/global/js-constants/Theme';
 import withChakraThemeProvider from 'src/hoc/withChakraThemeProvider';
 
@@ -7,16 +8,19 @@ interface SelfProps {
   ariaLabel?: string;
   icon?: any;
   respectiveToParent?: boolean;
+  onClick?: MouseEventHandler<HTMLButtonElement>;
 }
 
 const FloatingActionButton = ({
   ariaLabel,
   icon,
   respectiveToParent,
+  onClick,
 }: SelfProps) => {
   return (
     <IconButton
       aria-label={ariaLabel || 'add'}
+      onClick={onClick}
       icon={
         icon || (
           <AddIcon

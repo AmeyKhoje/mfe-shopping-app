@@ -1,25 +1,7 @@
-import {
-  Box,
-  Button,
-  ButtonGroup,
-  ChakraProvider,
-  IconButton,
-  Modal,
-  ModalBody,
-  ModalCloseButton,
-  ModalContent,
-  ModalFooter,
-  ModalHeader,
-  ModalOverlay,
-  ThemeConfig,
-  extendTheme,
-  useDisclosure,
-  useMultiStyleConfig,
-} from '@chakra-ui/react';
 import withChakraThemeProvider from 'src/hoc/withChakraThemeProvider';
-import Typography from '../common/Typography';
-import { CloseIcon } from '@chakra-ui/icons';
-import { COLOR_PALETTE } from 'src/global/js-constants/Theme';
+import appModalContext from 'src/contexts/AppModalContext';
+import AppModalInner from './AppModalInner';
+import { useCallback, useEffect, useMemo, useState } from 'react';
 
 interface SelfProps {
   header?: string;
@@ -28,22 +10,11 @@ interface SelfProps {
   footerActions?: boolean;
   onPrimaryAction?: () => void;
   onSecondaryAction?: () => void;
-  defaultOpen?: boolean;
+  open?: boolean;
+  onClose: () => void;
+  primaryActionLabel?: string;
+  secondaryActionLabel?: string;
 }
-
-const theme = extendTheme({
-  components: {
-    Modal: {
-      variants: {
-        wide: {
-          content: {
-            width: '90rem',
-          },
-        },
-      },
-    },
-  },
-});
 
 const AppModal = ({
   content,
@@ -52,45 +23,46 @@ const AppModal = ({
   isClosable = true,
   onPrimaryAction,
   onSecondaryAction,
-  defaultOpen,
+  open,
+  onClose,
+  primaryActionLabel,
+  secondaryActionLabel,
 }: SelfProps) => {
-  const styles = useMultiStyleConfig('AppModalTheme');
-  const { onClose, isOpen } = useDisclosure({
-    defaultIsOpen: !!defaultOpen,
-  });
+  const [isVisible, setIsVisible] = useState(false);
+
+  useEffect(() => {
+    if (isVisible !== open) {
+      setIsVisible(!!open);
+    }
+  }, [open]);
+
+  const handleVisibility = (value: boolean) => {
+    if (!value) {
+      onClose();
+      setIsVisible(!!value);
+    } else {
+      setIsVisible(!!value);
+    }
+  };
 
   return (
-    <Box __css={styles.modal}>
-      <Box>
-        <Box __css={styles.modalHeader}>
-          <Box width={'70%'} pr={'1rem'} boxSizing="border-box">
-            <Typography size={1.7} bold={5} color={COLOR_PALETTE.WHITE}>
-              {header}
-            </Typography>
-          </Box>
-          <Box
-            width={'30%'}
-            boxSizing="border-box"
-            display={'flex'}
-            justifyContent={'flex-end'}
-            alignItems={'center'}
-          >
-            <IconButton aria-label="close" __css={styles.closeBtn}>
-              <CloseIcon color={COLOR_PALETTE.WHITE} />
-            </IconButton>
-          </Box>
-        </Box>
-        <Box __css={styles.modalContent}>
-          <Box height={'100vh'}>Hello</Box>
-        </Box>
-        <Box __css={styles.modalFooter}>
-          <ButtonGroup ml={'auto'}>
-            <Button __css={styles.secondaryActionButton}>Cancel</Button>
-            <Button __css={styles.primaryActionButton}>Save</Button>
-          </ButtonGroup>
-        </Box>
-      </Box>
-    </Box>
+    <appModalContext.Provider
+      value={{
+        handleVisibility,
+        isOpen: isVisible,
+      }}
+    >
+      <AppModalInner
+        header={header}
+        content={content}
+        footerActions={footerActions}
+        isClosable={isClosable}
+        onPrimaryAction={onPrimaryAction}
+        onSecondaryAction={onSecondaryAction}
+        primaryActionLabel={primaryActionLabel}
+        secondaryActionLabel={secondaryActionLabel}
+      />
+    </appModalContext.Provider>
   );
 };
 

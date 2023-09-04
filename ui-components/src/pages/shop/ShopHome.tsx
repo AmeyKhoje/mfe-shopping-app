@@ -1,9 +1,12 @@
 import { Container, Flex, SimpleGrid } from '@chakra-ui/react';
+import { useState } from 'react';
 import { FloatingActionButton } from 'src/components';
 import AppModal from 'src/components/ui-elements/app-modal/AppModal';
 import ProductCard from 'src/components/ui-elements/shop/product-card/ProductCard';
 
 const ShopHome = () => {
+  const [isOpen, setIsOpen] = useState(false);
+  const handleCloseAddProduct = () => setIsOpen(false);
   const action = (id: string, count: number) => {
     console.log(id, count);
   };
@@ -81,12 +84,17 @@ const ShopHome = () => {
         />
       </SimpleGrid>
       <Flex alignItems={'flex-start'} flexWrap={'wrap'}></Flex>
-      <FloatingActionButton ariaLabel="add-product" />
+      <FloatingActionButton
+        ariaLabel="add-product"
+        onClick={() => setIsOpen(true)}
+      />
       <AppModal
         content={'Hello Amey'}
         defaultOpen
         isClosable
         header={'Add Product'}
+        open={isOpen}
+        onClose={handleCloseAddProduct}
       />
     </Container>
   );
