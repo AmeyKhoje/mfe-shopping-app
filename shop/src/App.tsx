@@ -3,6 +3,8 @@ import MainRouter from './router/MainRouter';
 import { auth } from './firebase/Config';
 import { Events } from 'utilityFunctions/constants';
 import { registerEvent } from './custom-events/CustomEvent';
+import { Provider } from 'react-redux';
+import { store } from './store';
 
 const App = () => {
   auth.onAuthStateChanged((user) => {
@@ -13,7 +15,9 @@ const App = () => {
   });
   return (
     <div>
-      <MainRouter />
+      <Provider store={store}>
+        <MainRouter />
+      </Provider>
     </div>
   );
 };

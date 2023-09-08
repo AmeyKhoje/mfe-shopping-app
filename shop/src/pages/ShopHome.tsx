@@ -1,8 +1,9 @@
 import { useMemo, useState } from 'react';
 import { useNavigate, useParams, useSearchParams } from 'react-router-dom';
-import AddProductForm from 'src/components/forms/AddProductForm';
+import AddProductBare from 'src/components/bare/AddProductBare';
 import { AppModal, FloatingActionButton } from 'uiComponents/components';
 import { ShopHome as ShopHomePage } from 'uiComponents/pages';
+import { useSelector } from 'react-redux';
 
 const ShopHome = () => {
   const navigate = useNavigate();
@@ -27,15 +28,7 @@ const ShopHome = () => {
   return (
     <>
       <ShopHomePage />
-      <FloatingActionButton onClick={handleAddProductModalOpen} />
-      <AppModal
-        onClose={handleAddProductModalClose}
-        content={<AddProductForm />}
-        header={'Add New Product'}
-        primaryActionLabel={'Add'}
-        secondaryActionLabel={'Discard'}
-        open={openModalByDefault || isAddProductModalOpen}
-      />
+      <AddProductBare />
     </>
   );
 };
