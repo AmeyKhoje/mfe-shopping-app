@@ -9,12 +9,18 @@ import {
   Typography,
 } from 'uiComponents/components';
 import { navigateToRemote } from 'utilityFunctions/helpers';
+import { zodResolver } from '@hookform/resolvers/zod';
+import { LoginCredentialsZod } from 'src/zod/LoginZod';
 
 const LoginForm = () => {
-  const { control, handleSubmit } = useForm();
+  const { control, handleSubmit } = useForm({
+    resolver: zodResolver(LoginCredentialsZod),
+  });
   const navigate = useNavigate();
 
   const handleLogin = async (data: any) => {
+    console.log(data);
+
     login(data?.email, data?.password)
       .then((response: ApiResponseModel) => {
         if (!!response.status) {

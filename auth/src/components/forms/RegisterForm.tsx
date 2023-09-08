@@ -9,9 +9,13 @@ import { registerFormFields } from './helpers';
 import { useNavigate } from 'react-router-dom';
 import { createUser } from 'src/firebase/FirebaseHelpers';
 import ApiResponseModel from 'src/models/ApiResponseModel';
+import { zodResolver } from '@hookform/resolvers/zod';
+import { UserZod } from 'src/zod/RegisterZod';
 
 const RegisterForm = () => {
-  const { control, handleSubmit } = useForm();
+  const { control, handleSubmit, formState } = useForm({
+    resolver: zodResolver(UserZod),
+  });
   const navigate = useNavigate();
 
   const handleRegister = (data: any) => {

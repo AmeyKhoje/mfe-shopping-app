@@ -23,7 +23,7 @@ export type FormInputType = {
   onChange: () => void;
   size: 'sm' | 'md' | 'xl' | 'xxl' | 'fullWidth';
   variant: color_string_type;
-  error: string;
+  error: { message: string };
   name: string;
   onBlur: () => void;
   type: string;
