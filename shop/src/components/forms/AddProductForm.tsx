@@ -24,21 +24,25 @@ const AddProductForm = ({ control }: { control: Control }) => {
           render={({
             field: { name, onBlur, onChange, value },
             fieldState: { error },
-          }) => (
-            <FormFieldContainer>
-              <Typography size={1.5} mb={1}>
-                {productField.label}
-              </Typography>
-              <FormInput
-                placeholder={productField.placeholder}
-                type={productField.type}
-                onChange={onChange}
-                value={value}
-                name={name}
-                error={error}
-              />
-            </FormFieldContainer>
-          )}
+          }) => {
+            console.log('VALUE', value);
+
+            return (
+              <FormFieldContainer>
+                <Typography size={1.5} mb={1}>
+                  {productField.label}
+                </Typography>
+                <FormInput
+                  placeholder={productField.placeholder}
+                  type={productField.type}
+                  onChange={onChange}
+                  value={value || ''}
+                  name={name}
+                  error={error}
+                />
+              </FormFieldContainer>
+            );
+          }}
         />
       ))}
 

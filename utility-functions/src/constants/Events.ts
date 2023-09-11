@@ -5,6 +5,8 @@ const UTILITY = {
   ERROR: 'ERROR',
   LOGIN: 'LOGIN',
   LOGOUT: 'LOGOUT',
+  PRODUCT: 'PRODUCT',
+  NEW_ADDED: 'NEW_ADDED',
 };
 
 export default {
@@ -17,4 +19,5 @@ export default {
     ERROR: `${UTILITY.USER}_${UTILITY.LOGIN}_${UTILITY.ERROR}`,
   },
   LOGOUT: `${UTILITY.USER}_${UTILITY.LOGOUT}`,
+  PRODUCT: `${UTILITY.PRODUCT}_EVENT`,
 };

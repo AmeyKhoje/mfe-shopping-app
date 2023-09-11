@@ -25,6 +25,8 @@ const ShopHome = () => {
     setIsAddProductModalOpen(true);
   };
 
+  console.log('here');
+
   return (
     <>
       <ShopHomePage />
