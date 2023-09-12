@@ -1,4 +1,3 @@
-import { useNavigate, useSearchParams } from 'react-router-dom';
 import AddProductForm from '../forms/AddProductForm';
 import { AppModal, FloatingActionButton } from 'uiComponents/components';
 import { useMemo, useState } from 'react';
@@ -7,11 +6,9 @@ import * as yup from 'yup';
 import { useForm } from 'react-hook-form';
 import { productSchema } from 'src/schemas/ProductSchema';
 import { useSelector } from 'react-redux';
-import { UserSliceInterface } from 'src/store/slices/UserSlice';
 import { isEqual } from 'underscore';
 import { addProduct } from 'src/firebase/FirebaseHelpers';
 import { ApiResponseInterface } from 'src/models/ApiResponse';
-import { toast } from 'react-hot-toast';
 
 const AddProductBare = () => {
   const [isAddProductModalOpen, setIsAddProductModalOpen] = useState(false);
@@ -28,6 +25,7 @@ const AddProductBare = () => {
   }, [user]);
 
   const handleAddProductModalClose = () => {
+    reset(productSchema.getDefault());
     setIsAddProductModalOpen(false);
   };
 
@@ -44,8 +42,6 @@ const AddProductBare = () => {
       });
     }
   };
-
-  console.log(formState);
 
   return (
     <>

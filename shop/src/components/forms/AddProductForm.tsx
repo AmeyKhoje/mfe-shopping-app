@@ -1,19 +1,19 @@
 import { ChangeEvent, memo, useState } from 'react';
-import { Controller, useForm, Control } from 'react-hook-form';
-import Product from 'src/models/Product';
-import { Shape } from 'src/types/Schemas';
+import { Controller, Control } from 'react-hook-form';
 import { ADD_PRODUCT_FORM_FIELDS } from 'src/utils/Constants';
-import { useYupValidationResolver } from 'src/utils/Validation';
 import {
   FormInput,
   FormFieldContainer,
   Typography,
   FilePicker,
-  FormButton,
 } from 'uiComponents/components';
 
 const AddProductForm = ({ control }: { control: Control }) => {
   const [file, setFile] = useState<any>();
+
+  const handleImageChange = (event: ChangeEvent<HTMLInputElement>) => {
+    if (event.target.files?.length) setFile(event.target.files[0]);
+  };
 
   return (
     <>
@@ -24,25 +24,22 @@ const AddProductForm = ({ control }: { control: Control }) => {
           render={({
             field: { name, onBlur, onChange, value },
             fieldState: { error },
-          }) => {
-            console.log('VALUE', value);
-
-            return (
-              <FormFieldContainer>
-                <Typography size={1.5} mb={1}>
-                  {productField.label}
-                </Typography>
-                <FormInput
-                  placeholder={productField.placeholder}
-                  type={productField.type}
-                  onChange={onChange}
-                  value={value || ''}
-                  name={name}
-                  error={error}
-                />
-              </FormFieldContainer>
-            );
-          }}
+          }) => (
+            <FormFieldContainer>
+              <Typography size={1.5} mb={1}>
+                {productField.label}
+              </Typography>
+              <FormInput
+                placeholder={productField.placeholder}
+                type={productField.type}
+                onChange={onChange}
+                onBlur={onBlur}
+                value={value || ''}
+                name={name}
+                error={error}
+              />
+            </FormFieldContainer>
+          )}
         />
       ))}
 
@@ -50,12 +47,7 @@ const AddProductForm = ({ control }: { control: Control }) => {
         <Typography size={1.5} mb={1}>
           Product Image
         </Typography>
-        <FilePicker
-          path={file}
-          onChange={(event: ChangeEvent<HTMLInputElement>) => {
-            if (event.target.files?.length) setFile(event.target.files[0]);
-          }}
-        />
+        <FilePicker path={file} onChange={handleImageChange} />
       </FormFieldContainer>
     </>
   );
