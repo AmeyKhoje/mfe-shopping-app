@@ -13,6 +13,8 @@ import FloatingActionButton from './ui-elements/fab/FloatingActionButton';
 import AppModal from './ui-elements/app-modal/AppModal';
 import FilePicker from './form-elements/file-picker/FilePicker';
 
+import CustomSelect from './form-elements/custom-select/CustomSelect';
+
 export {
   FormButton,
   FormInput,
@@ -26,4 +28,5 @@ export {
   FloatingActionButton,
   AppModal,
   FilePicker,
+  CustomSelect,
 };

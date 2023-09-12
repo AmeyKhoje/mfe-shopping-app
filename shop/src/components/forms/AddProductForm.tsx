@@ -6,6 +6,7 @@ import {
   FormFieldContainer,
   Typography,
   FilePicker,
+  CustomSelect,
 } from 'uiComponents/components';
 
 const AddProductForm = ({ control }: { control: Control }) => {
@@ -42,6 +43,8 @@ const AddProductForm = ({ control }: { control: Control }) => {
           )}
         />
       ))}
+
+      <CustomSelect />
 
       <FormFieldContainer>
         <Typography size={1.5} mb={1}>

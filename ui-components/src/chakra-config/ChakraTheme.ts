@@ -7,6 +7,7 @@ import ProductCardTheme from 'src/global/component-themes/ProductCardTheme';
 import CounterCardTheme from 'src/global/component-themes/CounterCardTheme';
 import AppModalTheme from 'src/global/component-themes/AppModalTheme';
 import FilePickerTheme from 'src/global/component-themes/FilePickerTheme';
+import CustomSelectTheme from 'src/global/component-themes/CustomSelectTheme';
 
 const theme = extendTheme({
   fonts: {
@@ -23,6 +24,7 @@ const theme = extendTheme({
     CounterCardTheme,
     AppModalTheme,
     FilePickerTheme,
+    CustomSelectTheme,
   },
 });
 
