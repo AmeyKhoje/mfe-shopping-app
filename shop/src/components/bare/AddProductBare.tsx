@@ -7,7 +7,7 @@ import { useForm } from 'react-hook-form';
 import { productSchema } from 'src/schemas/ProductSchema';
 import { useSelector } from 'react-redux';
 import { isEqual } from 'underscore';
-import { addProduct } from 'src/firebase/FirebaseHelpers';
+import { addProduct, getAllProducts } from 'src/firebase/FirebaseHelpers';
 import { ApiResponseInterface } from 'src/models/ApiResponse';
 
 const AddProductBare = () => {
@@ -33,11 +33,12 @@ const AddProductBare = () => {
     setIsAddProductModalOpen(true);
   };
 
-  const handleAddProduct = (data: any) => {
+  const handleAddProduct = async (data: any) => {
     if (data && userId) {
-      addProduct(data, userId).then((response: ApiResponseInterface) => {
+      addProduct(data, userId).then(async (response: ApiResponseInterface) => {
         if (response.success) {
-          reset(productSchema.getDefault());
+          handleAddProductModalClose();
+          await getAllProducts();
         }
       });
     }

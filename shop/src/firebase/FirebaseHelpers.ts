@@ -1,16 +1,23 @@
-import { addDoc, collection } from 'firebase/firestore';
+import { addDoc, collection, getDocs, query } from 'firebase/firestore';
 import { Events } from 'utilityFunctions/constants';
 import { db } from './Config';
 import { ProductModel } from 'src/schemas/ProductSchema';
 import ApiResponse, { ApiResponseInterface } from 'src/models/ApiResponse';
 import { registerEvent } from 'src/custom-events/CustomEvent';
 
-export const addProduct = (product: ProductModel, userId: string) =>
+export const addProduct = (
+  product: ProductModel,
+  userId: string,
+  image?: ImageBitmap
+) =>
   new Promise<ApiResponseInterface>((resolve, reject) => {
     try {
       addDoc(collection(db, 'products'), {
         ...product,
         createdBy: userId,
+        image:
+          image ||
+          'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ2L7bhAsGnkgxjZt0pYvvk1udoCyr0UfuCLw&usqp=CAU',
       }).then((response) => {
         if (response.id) {
           resolve(
@@ -51,4 +58,28 @@ export const addProduct = (product: ProductModel, userId: string) =>
       });
       dispatchEvent(successEvent);
     }
+  });
+
+export const getAllProducts = () =>
+  new Promise<ApiResponseInterface>((resolve, reject) => {
+    const productQuery = query(collection(db, 'products'));
+    getDocs(productQuery)
+      .then((response) => {
+        if (response.empty) {
+          resolve(new ApiResponse('', true, []).getResponse());
+        } else {
+          resolve(
+            new ApiResponse(
+              '',
+              true,
+              response.docs.map((value) => value.data())
+            ).getResponse()
+          );
+        }
+      })
+      .catch((error) => {
+        reject(
+          new ApiResponse('Failed to fetch products', false).getResponse()
+        );
+      });
   });
