@@ -3,7 +3,7 @@ import UserSlice from './slices/UserSlice';
 import { useDispatch, useSelector } from 'react-redux';
 import ProductSlice from './slices/ProductSlice';
 import { productsApi } from './services/ProductService';
-import { curryGetDefaultMiddleware } from '@reduxjs/toolkit/dist/getDefaultMiddleware';
+import logger from 'redux-logger';
 
 export const createCustomStore = (options?: any) => {
   return configureStore({
@@ -12,8 +12,8 @@ export const createCustomStore = (options?: any) => {
       user: UserSlice,
       product: ProductSlice,
     },
-    middleware: (curryGetDefaultMiddleware) =>
-      curryGetDefaultMiddleware().concat(productsApi.middleware),
+    middleware: (getDefaultMiddleware) =>
+      getDefaultMiddleware().concat(productsApi.middleware, logger),
     ...options,
   });
 };

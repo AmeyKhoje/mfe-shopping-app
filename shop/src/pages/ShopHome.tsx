@@ -5,9 +5,11 @@ import { useGetAllProductsQuery } from 'src/store/services/ProductService';
 const ShopHome = () => {
   const { data: products } = useGetAllProductsQuery(null);
 
+  console.log(products);
+
   return (
     <>
-      <ShopHomePage />
+      <ShopHomePage products={products} />
       <AddProductBare />
     </>
   );
