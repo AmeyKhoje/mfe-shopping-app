@@ -18,7 +18,7 @@ const CustomSelect = ({ list }: SelfProps) => {
 
   const toggle = useCallback(
     (value?: boolean) => {
-      setIsOpen(value || !isOpen);
+      setIsOpen(!!value);
     },
     [isOpen]
   );

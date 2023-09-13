@@ -10,21 +10,12 @@ const CustomSelectInner = () => {
   const ref = useRef(null);
   const styles = useMultiStyleConfig('CustomSelectTheme');
   const { isOpen, toggle } = useContext(CustomSelectContext);
+
   useOutsideClick(ref, (value: boolean) => {
-    console.log('val', value);
+    !!value && toggle(false);
   });
 
-  const handleToggle = () => toggle();
-
-  console.log(ref);
-
-  useEffect(() => {
-    console.log(ref);
-
-    document.addEventListener('mousedown', (event) => {});
-
-    return () => document.removeEventListener('mousedown', () => {});
-  }, [ref]);
+  const handleToggle = () => toggle(!isOpen);
 
   return (
     <Box __css={styles.main} ref={ref}>
@@ -32,7 +23,7 @@ const CustomSelectInner = () => {
         <CustomSelectLabel />
       </Box>
       {isOpen && (
-        <Box>
+        <Box __css={styles.popper}>
           <CustomSelectList />
         </Box>
       )}
