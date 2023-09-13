@@ -9,15 +9,12 @@ import CustomSelectListItem from './CustomSelectListItem';
 const CustomSelectList = () => {
   const styles = useMultiStyleConfig('CustomSelectTheme');
   const { list } = useContext(CustomSelectContext);
-
-  console.log(list);
-
   return (
     <List __css={styles.list}>
       {list.map((item: ICustomSelectListItem, index: number) => {
         return (
           <CustomSelectListItem
-            label={item.label}
+            item={item}
             key={`${item.label}_${item.id}_${index}`}
           />
         );

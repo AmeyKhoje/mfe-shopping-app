@@ -1,23 +1,42 @@
 import { Box, Checkbox, ListItem, useMultiStyleConfig } from '@chakra-ui/react';
-import { useContext, useState } from 'react';
+import { useContext, useEffect, useMemo, useState } from 'react';
 import Typography from 'src/components/ui-elements/common/Typography';
-import CustomSelectContext from 'src/contexts/CustomSelectContext';
+import CustomSelectContext, {
+  ICustomSelectListItem,
+} from 'src/contexts/CustomSelectContext';
 import { COLOR_PALETTE } from 'src/global/js-constants/Theme';
 import withChakraThemeProvider from 'src/hoc/withChakraThemeProvider';
 import { TCustomSelectListItem } from 'src/types/Components';
 
 const CustomSelectListItem = ({
-  label,
-  id,
   multiSelectComponent,
+  item: { label, id, ...rest },
 }: TCustomSelectListItem) => {
   const [isChecked, setIsChecked] = useState(false);
   const styles = useMultiStyleConfig('CustomSelectTheme');
-  const { isMultiSelect } = useContext(CustomSelectContext);
+  const { isMultiSelect, handleSelect, toggle, selectedItem } =
+    useContext(CustomSelectContext);
 
   const handleClick = () => {
     setIsChecked(!isChecked);
+    handleSelect({ label, id, ...rest });
+    !isMultiSelect && toggle(false);
   };
+
+  useEffect(() => {
+    if (!selectedItem) {
+      setIsChecked(false);
+    } else {
+      if (Array.isArray(selectedItem)) {
+        const isFound = selectedItem.find(
+          (item: ICustomSelectListItem) => item.id === id
+        );
+        setIsChecked(!!isFound);
+      } else {
+        setIsChecked(selectedItem.id === id);
+      }
+    }
+  }, [selectedItem]);
 
   return (
     <ListItem css={styles.listItem} onClick={handleClick}>

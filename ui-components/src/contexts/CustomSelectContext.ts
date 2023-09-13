@@ -11,6 +11,8 @@ type TCustomSelect = {
   list: Array<ICustomSelectListItem>;
   toggle: Function;
   isMultiSelect: boolean;
+  handleSelect: Function;
+  selectedItem: ICustomSelectListItem | ICustomSelectListItem[] | null;
 };
 
 export default createContext<TCustomSelect>({
@@ -18,4 +20,6 @@ export default createContext<TCustomSelect>({
   list: [],
   toggle: () => {},
   isMultiSelect: false,
+  handleSelect: () => {},
+  selectedItem: null,
 });

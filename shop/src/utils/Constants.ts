@@ -48,7 +48,7 @@ export const CATEGORIES = [
     label: 'Electronics',
   },
   {
-    id: 124,
+    id: 125,
     label: 'Mobiles',
   },
   {

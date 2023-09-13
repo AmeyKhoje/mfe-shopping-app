@@ -1,4 +1,5 @@
 import { ReactElement } from 'react';
+import { ICustomSelectListItem } from 'src/contexts/CustomSelectContext';
 
 type color_string_type =
   | 'PRIMARY'
@@ -36,4 +37,5 @@ export type TCustomSelectListItem = {
   id: string | number;
   isMultiSelect: boolean;
   multiSelectComponent: ReactElement;
+  item: ICustomSelectListItem;
 };

@@ -8,6 +8,7 @@ import {
   FilePicker,
   CustomSelect,
 } from 'uiComponents/components';
+import { any } from 'underscore';
 
 const AddProductForm = ({ control }: { control: Control }) => {
   const [file, setFile] = useState<any>();
@@ -44,7 +45,11 @@ const AddProductForm = ({ control }: { control: Control }) => {
         />
       ))}
 
-      <CustomSelect list={CATEGORIES} isMultiSelect />
+      <CustomSelect
+        list={CATEGORIES}
+        isMultiSelect
+        handleChange={(item: any) => console.log('ITEM', item)}
+      />
 
       <FormFieldContainer>
         <Typography size={1.5} mb={1}>
