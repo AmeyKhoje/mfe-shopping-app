@@ -18,11 +18,6 @@ const AddProductForm = ({ control }: { control: Control }) => {
 
   return (
     <>
-      <CustomSelect
-        list={CATEGORIES}
-        isMultiSelect
-        handleChange={(item: any) => console.log('ITEM', item)}
-      />
       {ADD_PRODUCT_FORM_FIELDS.map((productField) => (
         <Controller
           control={control}
