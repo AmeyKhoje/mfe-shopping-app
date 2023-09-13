@@ -1,15 +1,16 @@
+import { memo, useCallback, useMemo, useState } from 'react';
 import withChakraThemeProvider from 'src/hoc/withChakraThemeProvider';
 import CustomSelectInner from './CustomSelectInner';
 import CustomSelectContext, {
   ICustomSelectListItem,
 } from 'src/contexts/CustomSelectContext';
-import { useCallback, useMemo, useState } from 'react';
 
 interface SelfProps {
   list: ArrayLike<ICustomSelectListItem>;
+  isMultiSelect?: boolean;
 }
 
-const CustomSelect = ({ list }: SelfProps) => {
+const CustomSelect = memo(({ list, isMultiSelect = false }: SelfProps) => {
   const [isOpen, setIsOpen] = useState(false);
 
   const memoizedList = useMemo<ArrayLike<ICustomSelectListItem>>(() => {
@@ -29,11 +30,12 @@ const CustomSelect = ({ list }: SelfProps) => {
         isOpen,
         list: memoizedList,
         toggle,
+        isMultiSelect,
       }}
     >
       <CustomSelectInner />
     </CustomSelectContext.Provider>
   );
-};
+});
 
 export default withChakraThemeProvider(CustomSelect);

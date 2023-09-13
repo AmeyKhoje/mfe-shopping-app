@@ -8,6 +8,7 @@ import CounterCardTheme from 'src/global/component-themes/CounterCardTheme';
 import AppModalTheme from 'src/global/component-themes/AppModalTheme';
 import FilePickerTheme from 'src/global/component-themes/FilePickerTheme';
 import CustomSelectTheme from 'src/global/component-themes/CustomSelectTheme';
+import { COLOR_PALETTE } from 'src/global/js-constants/Theme';
 
 const theme = extendTheme({
   fonts: {
@@ -25,6 +26,28 @@ const theme = extendTheme({
     AppModalTheme,
     FilePickerTheme,
     CustomSelectTheme,
+    Checkbox: {
+      sizes: {
+        md: {
+          control: {
+            w: '2rem',
+            h: '2rem',
+            border: `0.3rem solid`,
+            borderColor: COLOR_PALETTE.PRIMARY,
+            borderRadius: '0.4rem',
+          },
+          icon: {
+            fontSize: '1.4rem',
+          },
+        },
+      },
+    },
+  },
+  colors: {
+    primary: {
+      500: COLOR_PALETTE.PRIMARY,
+    },
+    secondary: COLOR_PALETTE.SECONDARY,
   },
 });
 

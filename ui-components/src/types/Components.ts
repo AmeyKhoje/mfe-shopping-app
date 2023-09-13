@@ -1,3 +1,5 @@
+import { ReactElement } from 'react';
+
 type color_string_type =
   | 'PRIMARY'
   | 'SECONDARY'
@@ -27,4 +29,11 @@ export type FormInputType = {
   name: string;
   onBlur: () => void;
   type: string;
+};
+
+export type TCustomSelectListItem = {
+  label: string;
+  id: string | number;
+  isMultiSelect: boolean;
+  multiSelectComponent: ReactElement;
 };

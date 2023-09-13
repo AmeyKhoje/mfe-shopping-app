@@ -41,3 +41,18 @@ export const ADD_PRODUCT_FORM_FIELDS = [
     placeholder: 'Enter product Discounted Price',
   },
 ];
+
+export const CATEGORIES = [
+  {
+    id: 123,
+    label: 'Electronics',
+  },
+  {
+    id: 124,
+    label: 'Mobiles',
+  },
+  {
+    id: 124,
+    label: 'Laptops',
+  },
+];

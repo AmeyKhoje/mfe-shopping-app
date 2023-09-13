@@ -1,19 +1,21 @@
 import { createContext } from 'react';
 
 export interface ICustomSelectListItem {
-  title: string;
+  label: string;
   id: string;
   [key: string]: any;
 }
 
 type TCustomSelect = {
   isOpen: boolean;
-  list: ArrayLike<ICustomSelectListItem>;
+  list: Array<ICustomSelectListItem>;
   toggle: Function;
+  isMultiSelect: boolean;
 };
 
 export default createContext<TCustomSelect>({
   isOpen: false,
   list: [],
   toggle: () => {},
+  isMultiSelect: false,
 });

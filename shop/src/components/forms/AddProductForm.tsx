@@ -1,6 +1,6 @@
 import { ChangeEvent, memo, useState } from 'react';
 import { Controller, Control } from 'react-hook-form';
-import { ADD_PRODUCT_FORM_FIELDS } from 'src/utils/Constants';
+import { ADD_PRODUCT_FORM_FIELDS, CATEGORIES } from 'src/utils/Constants';
 import {
   FormInput,
   FormFieldContainer,
@@ -44,7 +44,7 @@ const AddProductForm = ({ control }: { control: Control }) => {
         />
       ))}
 
-      <CustomSelect />
+      <CustomSelect list={CATEGORIES} isMultiSelect />
 
       <FormFieldContainer>
         <Typography size={1.5} mb={1}>

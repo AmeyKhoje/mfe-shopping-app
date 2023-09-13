@@ -1,5 +1,23 @@
-import { createMultiStyleConfigHelpers } from '@chakra-ui/styled-system';
+import {
+  PartsStyleObject,
+  StyleConfig,
+  StyleObjectOrFn,
+  SystemStyleObject,
+  createMultiStyleConfigHelpers,
+} from '@chakra-ui/styled-system';
 import { COLOR_PALETTE } from '../js-constants/Theme';
+// import { StyledOptions } from '@emotion/styled';
+import { Theme } from '@chakra-ui/react';
+
+interface StyleOptions {
+  theme: Theme;
+  colorMode: 'light' | 'dark';
+  colorScheme: string;
+}
+
+type StyleInterpolation =
+  | { [part: string]: SystemStyleObject }
+  | ((options: StyleOptions) => { [part: string]: SystemStyleObject });
 
 const { defineMultiStyleConfig, definePartsStyle } =
   createMultiStyleConfigHelpers([
@@ -11,7 +29,7 @@ const { defineMultiStyleConfig, definePartsStyle } =
     'listItem',
   ]);
 
-const baseStyle = definePartsStyle({
+const baseStyle: StyleInterpolation = definePartsStyle({
   label: {
     display: 'flex',
     alignItems: 'center',
@@ -33,19 +51,39 @@ const baseStyle = definePartsStyle({
     backgroundColor: COLOR_PALETTE.LIGHT,
     position: 'relative',
   },
-  list: {},
-  listItem: {},
+  list: {
+    width: '100%',
+    padding: 0,
+  },
+  listItem: {
+    width: '100%',
+    height: '5rem',
+    display: 'flex',
+    alignItems: 'center',
+    padding: '0 1.5rem',
+    overflow: 'hidden',
+    boxSizing: 'border-box',
+    transition: 'all 0.2s',
+    backgroundColor: COLOR_PALETTE.LIGHT,
+    cursor: 'pointer',
+    '&:hover': {
+      backgroundColor: COLOR_PALETTE.ACCENT_BLACK_LIGHT,
+    },
+  },
   popper: {
     position: 'absolute',
-    top: '6rem',
+    top: '5.5rem',
     left: 0,
     width: '100%',
-    backgroundColor: COLOR_PALETTE.WHITE,
+    backgroundColor: COLOR_PALETTE.LIGHT,
     zIndex: 9,
     minHeight: '2rem',
     boxShadow: '0 0 1rem 0 rgba(0,0,0,0.1)',
     maxHeight: '25rem',
     overflowY: 'auto',
+    borderRadius: '1rem',
+    padding: '1rem 0',
+    boxSizing: 'border-box',
   },
 });
 
