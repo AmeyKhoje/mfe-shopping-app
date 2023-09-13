@@ -1,6 +1,6 @@
 import { ChevronDownIcon } from '@chakra-ui/icons';
-import { Box, Flex, useMultiStyleConfig } from '@chakra-ui/react';
-import { useContext, useMemo } from 'react';
+import { Box, useMultiStyleConfig } from '@chakra-ui/react';
+import { useContext, useEffect, useMemo, useRef } from 'react';
 import Typography from 'src/components/ui-elements/common/Typography';
 import CustomSelectContext, {
   ICustomSelectListItem,
@@ -8,8 +8,10 @@ import CustomSelectContext, {
 import withChakraThemeProvider from 'src/hoc/withChakraThemeProvider';
 
 const CustomSelectLabel = () => {
+  const ref = useRef<HTMLDivElement>(null);
   const styles = useMultiStyleConfig('CustomSelectTheme');
   const { selectedItem } = useContext(CustomSelectContext);
+
   const labelOnSelect = useMemo(() => {
     if (Array.isArray(selectedItem)) {
       let splitLabelArray: string[] = [];
@@ -33,10 +35,8 @@ const CustomSelectLabel = () => {
     } else return selectedItem?.label;
   }, [selectedItem]);
 
-  console.log(labelOnSelect);
-
   return (
-    <Box __css={styles.label}>
+    <Box __css={styles.label} ref={ref}>
       <Box>
         <Typography size={1.6}>
           {labelOnSelect ? labelOnSelect : 'Select Here'}

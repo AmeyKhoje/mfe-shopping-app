@@ -1,5 +1,4 @@
 import { ThemeProvider } from '@chakra-ui/react';
-import { ReactNode } from 'react';
 import theme from 'src/chakra-config/ChakraTheme';
 import '@fontsource/rubik/500.css';
 

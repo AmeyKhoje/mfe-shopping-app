@@ -47,15 +47,17 @@ const AddProductBare = () => {
   return (
     <>
       <FloatingActionButton onClick={handleAddProductModalOpen} />
-      <AppModal
-        onClose={handleAddProductModalClose}
-        content={<AddProductForm control={control} />}
-        header={'Add New Product'}
-        primaryActionLabel={'Add'}
-        secondaryActionLabel={'Discard'}
-        open={isAddProductModalOpen}
-        onPrimaryAction={handleSubmit(handleAddProduct)}
-      />
+      {isAddProductModalOpen && (
+        <AppModal
+          onClose={handleAddProductModalClose}
+          content={<AddProductForm control={control} />}
+          header={'Add New Product'}
+          primaryActionLabel={'Add'}
+          secondaryActionLabel={'Discard'}
+          open={isAddProductModalOpen}
+          onPrimaryAction={handleSubmit(handleAddProduct)}
+        />
+      )}
     </>
   );
 };

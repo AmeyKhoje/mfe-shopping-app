@@ -1,10 +1,9 @@
 import { Box, Checkbox, ListItem, useMultiStyleConfig } from '@chakra-ui/react';
-import { useContext, useEffect, useMemo, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import Typography from 'src/components/ui-elements/common/Typography';
 import CustomSelectContext, {
   ICustomSelectListItem,
 } from 'src/contexts/CustomSelectContext';
-import { COLOR_PALETTE } from 'src/global/js-constants/Theme';
 import withChakraThemeProvider from 'src/hoc/withChakraThemeProvider';
 import { TCustomSelectListItem } from 'src/types/Components';
 

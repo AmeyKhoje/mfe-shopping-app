@@ -1,7 +1,7 @@
 import withChakraThemeProvider from 'src/hoc/withChakraThemeProvider';
 import appModalContext from 'src/contexts/AppModalContext';
 import AppModalInner from './AppModalInner';
-import { useCallback, useEffect, useMemo, useState } from 'react';
+import { useEffect, useState } from 'react';
 
 interface SelfProps {
   header?: string;

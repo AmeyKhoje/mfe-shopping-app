@@ -72,7 +72,6 @@ const baseStyle: StyleInterpolation = definePartsStyle({
   },
   popper: {
     position: 'absolute',
-    top: '5.5rem',
     left: 0,
     width: '100%',
     backgroundColor: COLOR_PALETTE.LIGHT,

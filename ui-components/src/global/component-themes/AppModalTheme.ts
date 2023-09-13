@@ -19,7 +19,6 @@ const baseStyle = definePartsStyle({
     top: '10rem',
     left: '50%',
     transform: 'translate(-50%, -150vh)',
-    minHeight: '10rem',
     backgroundColor: COLOR_PALETTE.LIGHT,
     zIndex: '90',
     maxWidth: '80rem',
@@ -30,7 +29,7 @@ const baseStyle = definePartsStyle({
   modalBody: {},
   modalContent: {
     width: '100%',
-    maxHeight: 'calc(100vh - 20rem - 12rem)',
+    maxHeight: 'calc(100vh - 20rem - 5rem)',
     overflow: 'auto',
     padding: '2rem',
     boxSizing: 'border-box',
