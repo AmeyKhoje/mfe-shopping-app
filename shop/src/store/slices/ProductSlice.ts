@@ -1,7 +1,7 @@
-import { createSlice } from '@reduxjs/toolkit';
-import * as yup from 'yup';
+import { ActionReducerMapBuilder, createSlice } from '@reduxjs/toolkit';
 import { PayloadAction } from '@reduxjs/toolkit/dist/createAction';
 import { productsApi } from '../services/ProductService';
+import { EndpointBuilder } from '@reduxjs/toolkit/dist/query/endpointDefinitions';
 
 export interface IProductSlice {
   products: any[];
@@ -19,7 +19,7 @@ const userSlice = createSlice({
       state.products = action.payload;
     },
   },
-  extraReducers: (builder) => {
+  extraReducers: (builder: ActionReducerMapBuilder<IProductSlice>) => {
     builder
       .addMatcher(
         productsApi.endpoints.getAllProducts.matchPending,
@@ -32,7 +32,7 @@ const userSlice = createSlice({
         (state, action) => {
           return {
             ...state,
-            products: action.payload.data,
+            products: action.payload.data || action.payload,
           };
         }
       )
@@ -40,6 +40,30 @@ const userSlice = createSlice({
         productsApi.endpoints.getAllProducts.matchRejected,
         (state, action) => {
           console.log('Product_Rejected');
+        }
+      );
+    builder
+      .addMatcher(
+        productsApi.endpoints.addProduct.matchPending,
+        (state, action) => {
+          console.log('Loading products');
+        }
+      )
+      .addMatcher(
+        productsApi.endpoints.addProduct.matchFulfilled,
+        (state, action) => {
+          console.log('ACTION', action);
+
+          // return {
+          //   ...state,
+          //   products: action.payload.data,
+          // };
+        }
+      )
+      .addMatcher(
+        productsApi.endpoints.addProduct.matchRejected,
+        (state, action) => {
+          console.log('Failed to add');
         }
       );
   },

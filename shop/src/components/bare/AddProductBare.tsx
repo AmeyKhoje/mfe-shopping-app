@@ -9,11 +9,16 @@ import { useSelector } from 'react-redux';
 import { isEqual } from 'underscore';
 import { addProduct, getAllProducts } from 'src/firebase/FirebaseHelpers';
 import { ApiResponseInterface } from 'src/models/ApiResponse';
+import {
+  useAddProductQuery,
+  useLazyAddProductQuery,
+} from 'src/store/services/ProductService';
 
 const AddProductBare = () => {
   const [isAddProductModalOpen, setIsAddProductModalOpen] = useState(false);
+  const [skipAdd, setSkipAdd] = useState(true);
 
-  const { control, handleSubmit, reset, formState } = useForm({
+  const { control, handleSubmit, reset, formState, getValues } = useForm({
     resolver: yupResolver<yup.AnyObject>(productSchema),
     mode: 'onChange',
   });
@@ -24,6 +29,8 @@ const AddProductBare = () => {
     return user?.uid || null;
   }, [user]);
 
+  const [trigger, { isError }] = useLazyAddProductQuery();
+
   const handleAddProductModalClose = () => {
     reset(productSchema.getDefault());
     setIsAddProductModalOpen(false);
@@ -33,14 +40,25 @@ const AddProductBare = () => {
     setIsAddProductModalOpen(true);
   };
 
+  // const memoSkip = useMemo(() => {
+  //   if (!isLoading) {
+  //     setSkipAdd(true);
+  //     !isUninitialized && handleAddProductModalClose();
+  //   }
+  //   return;
+  // }, [isLoading]);
+
   const handleAddProduct = async (data: any) => {
     if (data && userId) {
-      addProduct(data, userId).then(async (response: ApiResponseInterface) => {
-        if (response.success) {
-          handleAddProductModalClose();
-          await getAllProducts();
-        }
-      });
+      trigger({ data: getValues(), userId })
+        .then(() => {
+          if (!isError) {
+            handleAddProductModalClose();
+          }
+        })
+        .catch((error) => {
+          console.log(error);
+        });
     }
   };
 

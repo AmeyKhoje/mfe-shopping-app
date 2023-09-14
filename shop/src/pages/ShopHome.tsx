@@ -1,15 +1,21 @@
 import AddProductBare from 'src/components/bare/AddProductBare';
 import { ShopHome as ShopHomePage } from 'uiComponents/pages';
 import { useGetAllProductsQuery } from 'src/store/services/ProductService';
+import { useTypedSelector } from 'src/store';
+import { useMemo } from 'react';
 
 const ShopHome = () => {
-  const { data: products } = useGetAllProductsQuery(null);
+  useGetAllProductsQuery(null);
 
-  console.log(products);
+  const products = useTypedSelector((state: any) => state.product.products);
+
+  const memoizedProducts = useMemo(() => {
+    return products;
+  }, [products?.toString()]);
 
   return (
     <>
-      <ShopHomePage products={products} />
+      <ShopHomePage products={memoizedProducts} />
       <AddProductBare />
     </>
   );
