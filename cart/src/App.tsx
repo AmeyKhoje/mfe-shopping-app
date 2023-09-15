@@ -1,10 +1,15 @@
 // import 'assets/styles/style.scss';
-import { TailButton } from 'tailwindUI/components';
+import { TailButton, TailCheckbox } from 'tailwindUI/components';
 
 const App = () => {
   return (
     <div>
-      <TailButton title={'Hello Amey'} />
+      <TailButton
+        title={'Hello Amey'}
+        icon={{ type: 'chevronRight', position: 'right' }}
+        variant={'primary'}
+      />
+      <TailCheckbox />
     </div>
   );
 };

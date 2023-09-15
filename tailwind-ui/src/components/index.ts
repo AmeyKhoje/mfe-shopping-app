@@ -1,3 +1,3 @@
-import { TailButton } from "./form-components";
+import { TailButton, TailCheckbox } from "./form-components";
 
-export {TailButton}
+export {TailButton, TailCheckbox}

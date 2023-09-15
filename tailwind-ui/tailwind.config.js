@@ -1,4 +1,6 @@
 /** @type {import('tailwindcss').Config} */
+const plugin = require('tailwindcss/plugin');
+
 module.exports = {
   content: ['./src/**/*.{js,jsx,ts,tsx}', './public/index.html'],
   theme: {
@@ -64,7 +66,40 @@ module.exports = {
       xlg: '3.5rem',
       '2xlg': '4rem',
       '3xlg': '4.5rem'
+    },
+    borderWidth: {
+      sm: '0.2rem',
+      md: '0.4rem'
     }
   },
-  plugins: [],
+  plugins: [
+    plugin(function({addComponents}) {
+      addComponents({
+        '.btn': {
+          padding: '1rem 2rem',
+          fontSize: '1.6rem',
+          '&-sm': {
+            padding: '0.5rem 1rem',
+            fontSize: '1rem'
+          },
+          '&-md': {
+            padding: '1.2rem 2.5rem',
+            fontSize: '2rem'
+          },
+          '&-lg': {
+            padding: '1.6rem 3.2rem',
+            fontSize: '2.4rem'
+          },
+          '&-full-sm': {
+            width: '100%',
+            padding: '1.8rem 2rem'
+          },
+          '&-full': {
+            width: '100%',
+            padding: '2.3rem 4rem'
+          }
+        }
+      })
+    })
+  ],
 };
