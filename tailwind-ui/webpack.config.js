@@ -5,7 +5,9 @@ const ModuleFederationPlugin = require('webpack/lib/container/ModuleFederationPl
 
 const packageJson = require('./package.json');
 
-module.exports = ({ mode } = { mode: 'production' }) => {
+module.exports = (
+  { mode } = { mode: 'production' },
+) => {
   return {
     mode,
     entry: './src/index.tsx',
@@ -15,7 +17,10 @@ module.exports = ({ mode } = { mode: 'production' }) => {
     },
     devServer: {
       static: {
-        directory: path.resolve(__dirname, './public'),
+        directory: path.resolve(
+          __dirname,
+          './public',
+        ),
       },
       port: 3012,
       hot: true,
@@ -53,7 +58,12 @@ module.exports = ({ mode } = { mode: 'production' }) => {
         {},
         {
           test: /\.css$/i,
-          use: ['style-loader', 'css-loader', 'sass-loader', 'postcss-loader'],
+          use: [
+            'style-loader',
+            'css-loader',
+            'sass-loader',
+            'postcss-loader',
+          ],
         },
         {
           test: /\.(png|svg|jp?g|gif)$/,
@@ -73,8 +83,14 @@ module.exports = ({ mode } = { mode: 'production' }) => {
       extensions: ['.jsx', '.js', '.tsx', '.ts'],
       alias: {
         src: path.resolve(__dirname, 'src'),
-        components: path.resolve(__dirname, 'src/components'),
-        assets: path.resolve(__dirname, 'src/assets'),
+        components: path.resolve(
+          __dirname,
+          'src/components',
+        ),
+        assets: path.resolve(
+          __dirname,
+          'src/assets',
+        ),
       },
     },
     plugins: [
@@ -86,26 +102,35 @@ module.exports = ({ mode } = { mode: 'production' }) => {
             'utilityFunctions@http://localhost:3010/remoteEntry.js',
         },
         exposes: {
-          './components': './src/components'
+          './components': './src/components',
+          './pages': './src/pages',
         },
         shared: {
           react: {
-            requiredVersion: packageJson.dependencies.react,
+            requiredVersion:
+              packageJson.dependencies.react,
             singleton: true,
             eager: true,
           },
           'react-dom': {
-            requiredVersion: packageJson.dependencies['react-dom'],
+            requiredVersion:
+              packageJson.dependencies[
+                'react-dom'
+              ],
             singleton: true,
             eager: true,
           },
           'react-router-dom': {
-            requiredVersion: packageJson.dependencies['react-router-dom'],
+            requiredVersion:
+              packageJson.dependencies[
+                'react-router-dom'
+              ],
             singleton: true,
             eager: true,
           },
           sass: {
-            requiredVersion: packageJson.dependencies.sass,
+            requiredVersion:
+              packageJson.dependencies.sass,
             singleton: true,
             eager: true,
           },
@@ -115,7 +140,11 @@ module.exports = ({ mode } = { mode: 'production' }) => {
         cache: true,
         chunks: true,
         filename: 'index.html',
-        template: path.resolve(__dirname, 'public', 'index.html'),
+        template: path.resolve(
+          __dirname,
+          'public',
+          'index.html',
+        ),
       }),
     ],
     optimization: {

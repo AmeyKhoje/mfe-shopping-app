@@ -1,15 +1,11 @@
 // import 'assets/styles/style.scss';
 import { TailButton, TailCheckbox } from 'tailwindUI/components';
+import { CartPage } from 'tailwindUI/pages';
 
 const App = () => {
   return (
     <div>
-      <TailButton
-        title={'Hello Amey'}
-        icon={{ type: 'chevronRight', position: 'right' }}
-        variant={'primary'}
-      />
-      <TailCheckbox />
+      <CartPage />
     </div>
   );
 };

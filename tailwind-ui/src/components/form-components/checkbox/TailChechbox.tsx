@@ -1,6 +1,8 @@
+import CSSProvider from 'src/hoc/CSSProvider';
+
 const TailCheckbox = () => {
   return (
-    <div className="flex">
+    <div className="flex rounded-xsm w-2.5 h-2.5 overflow-hidden">
       <input
         type="checkbox"
         className="peer relative appearance-none w-2.5 h-2.5 bg-accent-black-light text-primary  border-accent-black-border border-solid border-sm checked:bg-primary checked:border-primary"
@@ -23,4 +25,4 @@ const TailCheckbox = () => {
   );
 };
 
-export default TailCheckbox;
+export default CSSProvider(TailCheckbox);

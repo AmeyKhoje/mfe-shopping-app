@@ -2,23 +2,25 @@
 const plugin = require('tailwindcss/plugin');
 
 module.exports = {
-  content: ['./src/**/*.{js,jsx,ts,tsx}', './public/index.html'],
+  content: [
+    './src/**/*.{js,jsx,ts,tsx}',
+    './public/index.html',
+  ],
   theme: {
-    extend: {
-      
-    },
+    extend: {},
     colors: {
-      'primary': '#1d3557',
-      'secondary': '#457b9d',
+      primary: '#1d3557',
+      secondary: '#457b9d',
       'light-blue': '#a8dadc',
-      'light': '#f1faee',
-      'black': '#000000',
-      'white': '#FFFFFF',
-      'green': '#52b788',
-      'yellow': '#fee440',
+      light: '#f1faee',
+      black: '#000000',
+      white: '#FFFFFF',
+      green: '#52b788',
+      yellow: '#fee440',
       'accent-black': '#d1d1d1',
       'accent-black-border': '#a5a5a5',
-      'accent-black-light': '#e7e7e7'
+      'accent-black-light': '#e7e7e7',
+      'accent-text-1': '#737272',
     },
     fontFamily: {
       rubik: `'Rubik', sans-serif`,
@@ -45,61 +47,74 @@ module.exports = {
       9: '9rem',
       9.5: '9.5rem',
       10: '10rem',
-      10.5: '10.5rem'
+      10.5: '10.5rem',
+      12: '12rem',
+      14: '14rem',
+      100: '100%',
+      '10pc': '10%',
+      '20pc': '20%',
+      '50pc': '50%',
+      '5pc': '5%',
+      '70pc': '70%',
+      '22pc': '22%',
+      '51pc': '51%',
+      '60pc': '60%',
     },
     borderRadius: {
-      'none': '0',
-      'xsm': '0.3rem',
-      'sm': '0.5rem',
-      'xmd': '0.7rem',
-      'md': '1rem',
-      'xlg': '1.2rem',
-      'lg': '1.4rem',
-      'all': '989898rem',
-      DEFAULT: '0.2rem'
+      none: '0',
+      xsm: '0.3rem',
+      sm: '0.5rem',
+      xmd: '0.7rem',
+      md: '1rem',
+      xlg: '1.2rem',
+      lg: '1.4rem',
+      all: '989898rem',
+      DEFAULT: '0.2rem',
     },
     fontSize: {
       sm: '1.2rem',
       base: '1.7rem',
+      base2: '2rem',
       md: '2.3rem',
       lg: '3rem',
       xlg: '3.5rem',
       '2xlg': '4rem',
-      '3xlg': '4.5rem'
+      '3xlg': '4.5rem',
     },
     borderWidth: {
       sm: '0.2rem',
-      md: '0.4rem'
-    }
+      md: '0.4rem',
+      none: '0rem',
+    },
   },
   plugins: [
-    plugin(function({addComponents}) {
+    plugin(function ({ addComponents }) {
       addComponents({
         '.btn': {
           padding: '1rem 2rem',
           fontSize: '1.6rem',
           '&-sm': {
             padding: '0.5rem 1rem',
-            fontSize: '1rem'
+            fontSize: '1rem',
           },
           '&-md': {
             padding: '1.2rem 2.5rem',
-            fontSize: '2rem'
+            fontSize: '2rem',
           },
           '&-lg': {
             padding: '1.6rem 3.2rem',
-            fontSize: '2.4rem'
+            fontSize: '2.4rem',
           },
           '&-full-sm': {
             width: '100%',
-            padding: '1.8rem 2rem'
+            padding: '1.8rem 2rem',
           },
           '&-full': {
             width: '100%',
-            padding: '2.3rem 4rem'
-          }
-        }
-      })
-    })
+            padding: '2.3rem 4rem',
+          },
+        },
+      });
+    }),
   ],
 };
