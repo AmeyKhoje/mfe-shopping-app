@@ -1,5 +1,3 @@
 const TailInput = () => {
-  return (
-    <input type="text" />
-  )
-}
+  return <input type="text" />;
+};

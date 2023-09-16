@@ -1,18 +1,24 @@
-import { ButtonHTMLAttributes } from "react";
-import CSSProvider from "src/hoc/CSSProvider";
-import { getIcon } from "src/utils/Icons";
-import { buttonSizes, buttonVariants, iconSize, roundedSizes, textColor } from "./Config";
+import { ButtonHTMLAttributes } from 'react';
+import CSSProvider from 'src/hoc/CSSProvider';
+import { getIcon } from 'src/utils/Icons';
+import {
+  buttonSizes,
+  buttonVariants,
+  iconSize,
+  roundedSizes,
+  textColor,
+} from './Config';
 
 interface SelfProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   title: string;
-  variant: 'primary' | 'secondary' | 'basic' | 'dark'
-  size: 'sm' | 'md' | 'lg' | 'fullSm' | 'full',
-  rounded: 'xsm' | 'sm' | 'md' | 'all' | 'none',
+  variant: 'primary' | 'secondary' | 'basic' | 'dark';
+  size: 'sm' | 'md' | 'lg' | 'fullSm' | 'full';
+  rounded: 'xsm' | 'sm' | 'md' | 'all' | 'none';
   icon: {
-    position: 'left' | 'right',
-    type: any
-  },
-  extraClasses: string
+    position: 'left' | 'right';
+    type: any;
+  };
+  extraClasses: string;
 }
 
 const TailButton = ({
@@ -21,32 +27,32 @@ const TailButton = ({
   variant = 'basic',
   rounded = 'all',
   icon,
-  extraClasses
+  extraClasses,
 }: SelfProps) => {
   return (
-    <button className={`
+    <button
+      className={`
       ${roundedSizes[rounded]} flex items-center
       ${icon && 'justify-between'} transition-all font-rubik
       ${buttonVariants[variant]}
       ${textColor[variant]}
       ${buttonSizes[size] || 'btn'}
       ${extraClasses}
-    `}>
+    `}
+    >
       {!!icon && icon.position === 'left' && (
         <div className="mr-1">
           {getIcon(icon.type, iconSize[size || 'base'], textColor[variant])}
         </div>
       )}
-      <div>
-        {title}
-      </div>
+      <div>{title}</div>
       {!!icon && icon.position === 'right' && (
         <div className="ml-1">
           {getIcon(icon.type, iconSize[size || 'base'], textColor[variant])}
         </div>
       )}
     </button>
-  )
-}
+  );
+};
 
-export default CSSProvider(TailButton)
+export default CSSProvider(TailButton);
