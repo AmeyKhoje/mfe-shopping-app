@@ -1,12 +1,13 @@
 import {
-  ComponentClass,
-  FunctionComponent,
-  ReactElement,
   ReactNode,
   createElement,
   useMemo,
 } from 'react';
 import CSSProvider from 'src/hoc/CSSProvider';
+import {
+  checkValidDivision,
+  getElements,
+} from './GridHelper';
 
 type SelfProps = {
   gutterSpace: number;
@@ -21,82 +22,16 @@ const Grid = ({
 }: SelfProps) => {
   let ct = 0;
 
-  const validateDivision = () => {
-    let is = false;
-    if (divideBy.length) {
-      const sum = divideBy.reduce(
-        (prev: number, cur: number) => {
-          return prev + cur;
-        },
-        0,
-      );
-      if (sum <= 100 || sum > 0) {
-        is = true;
-      } else is = false;
-    }
-    return is;
-  };
+  const isValidDivision = useMemo(() => {
+    return checkValidDivision(divideBy);
+  }, [divideBy]);
 
-  const isValidDivision = validateDivision();
   if (!isValidDivision) {
     return <>Given wrong input</>;
   }
 
   const memoizedElements = useMemo(() => {
-    let doneEls = 0;
-    let spinner = 0;
-    return elements.map(
-      (item: ReactNode, index: number) => {
-        let eachRowEls = 0;
-        let isStart = spinner === 0;
-        let isEnd = index === elements.length - 1;
-
-        if (divideBy.length === 1) {
-          eachRowEls = Math.trunc(
-            100 / divideBy[0],
-          );
-        }
-        if (divideBy.length > 1) {
-          let count = 0;
-          divideBy.forEach((t, i) => {
-            if (count + t > 100) {
-              return;
-            }
-            ++eachRowEls;
-            count = count + t;
-          });
-        }
-
-        if (eachRowEls > 1) {
-          if (
-            index > 0 &&
-            index < elements.length - 1
-          ) {
-            if (doneEls + 1 === eachRowEls) {
-              isEnd = true;
-              spinner = 0;
-            } else ++spinner;
-          }
-          if (index === elements.length - 1) {
-            spinner = 0;
-          }
-          if (index === 0) {
-            ++spinner;
-          }
-        } else {
-          isEnd = true;
-          isStart = true;
-        }
-
-        ++doneEls;
-
-        return {
-          isStart,
-          isEnd,
-          element: item,
-        };
-      },
-    );
+    return getElements(elements, divideBy);
   }, [elements.toString()]);
 
   return (
