@@ -15,7 +15,11 @@ const CartListRow = () => {
         <CartListProduct />
       </div>
       <div className="w-22pc border-sm border-l-none border-t-none border-r-none flex items-center  flex-col p-3 border-accent-black-border">
-        <TailCounter />
+        <TailCounter
+          count={0}
+          handleDecrement={() => {}}
+          handleIncrement={() => {}}
+        />
         <button className="flex items-center p-0.5 hover:bg-light transition-all duration-200 rounded-sm mt-1">
           <TrashIcon width={'2rem'} />
           <span className="text-sm font-rubik ml-0.5 font-medium">
