@@ -6,9 +6,9 @@ import {
 
 const CartPage = () => {
   return (
-    <div className="w-100 pl-10 pr-10 bg-light">
+    <div className="w-100 pl-14 pr-14 pt-5 pb-5">
       <Grid
-        divideBy={[60, 40]}
+        divideBy={[65, 35]}
         elements={[
           <CartList />,
           <CartCheckoutCard />,

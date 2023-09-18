@@ -9,9 +9,14 @@ import {
   textColor,
 } from './Config';
 
-interface SelfProps extends ButtonHTMLAttributes<HTMLButtonElement> {
+interface SelfProps
+  extends ButtonHTMLAttributes<HTMLButtonElement> {
   title: string;
-  variant: 'primary' | 'secondary' | 'basic' | 'dark';
+  variant:
+    | 'primary'
+    | 'secondary'
+    | 'basic'
+    | 'dark';
   size: 'sm' | 'md' | 'lg' | 'fullSm' | 'full';
   rounded: 'xsm' | 'sm' | 'md' | 'all' | 'none';
   icon: {
@@ -33,7 +38,9 @@ const TailButton = ({
     <button
       className={`
       ${roundedSizes[rounded]} flex items-center
-      ${icon && 'justify-between'} transition-all font-rubik
+      ${
+        icon && 'justify-between'
+      } transition-all font-rubik
       ${buttonVariants[variant]}
       ${textColor[variant]}
       ${buttonSizes[size] || 'btn'}
@@ -42,13 +49,23 @@ const TailButton = ({
     >
       {!!icon && icon.position === 'left' && (
         <div className="mr-1">
-          {getIcon(icon.type, iconSize[size || 'base'], textColor[variant])}
+          {getIcon(
+            icon.type,
+            iconSize[size || 'base'],
+            textColor[variant],
+          )}
         </div>
       )}
-      <div>{title}</div>
+      <div className="w-100">
+        <p className="text-center">{title}</p>
+      </div>
       {!!icon && icon.position === 'right' && (
         <div className="ml-1">
-          {getIcon(icon.type, iconSize[size || 'base'], textColor[variant])}
+          {getIcon(
+            icon.type,
+            iconSize[size || 'base'],
+            textColor[variant],
+          )}
         </div>
       )}
     </button>
