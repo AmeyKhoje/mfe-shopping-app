@@ -79,6 +79,7 @@ module.exports = ({ mode } = { mode: 'production' }) => {
           utilityFunctions:
             'utilityFunctions@http://localhost:3010/remoteEntry.js',
           uiComponents: 'uiComponents@http://localhost:3011/remoteEntry.js',
+          providers: 'providers@http://localhost:3030/remoteEntry.js',
         },
         exposes: {},
         shared: {
