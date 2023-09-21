@@ -38,11 +38,25 @@ const NavProfile = ({ onLogout }: { onLogout: () => void }) => {
                 >
                   Amey Khoje
                 </Typography>
-                <Box marginLeft={'1rem'}>
+                <Box
+                  marginLeft={'1rem'}
+                  width={'3rem'}
+                  height={'3rem'}
+                  display={'flex'}
+                  alignItems={'center'}
+                >
                   {isOpen ? (
-                    <ChevronUpIcon color={COLOR_PALETTE.PRIMARY} />
+                    <ChevronUpIcon
+                      color={COLOR_PALETTE.PRIMARY}
+                      width={'3rem'}
+                      height={'3rem'}
+                    />
                   ) : (
-                    <ChevronDownIcon color={COLOR_PALETTE.PRIMARY} />
+                    <ChevronDownIcon
+                      color={COLOR_PALETTE.PRIMARY}
+                      width={'3rem'}
+                      height={'3rem'}
+                    />
                   )}
                 </Box>
               </Flex>

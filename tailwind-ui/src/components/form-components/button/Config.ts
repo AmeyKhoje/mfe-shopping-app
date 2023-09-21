@@ -22,6 +22,11 @@ const textColor = {
   dark: 'text-white',
 };
 
+const fontSizes = {
+  sm: 'text-sm',
+  md: 'text-md',
+};
+
 const roundedSizes = {
   xsm: 'rounded-xsm',
   sm: 'rounded-sm',
@@ -43,4 +48,5 @@ export {
   iconSize,
   roundedSizes,
   textColor,
+  fontSizes,
 };

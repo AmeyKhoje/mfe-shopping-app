@@ -74,8 +74,11 @@ module.exports = ({ mode } = { mode: 'production' }) => {
           utilityFunctions:
             'utilityFunctions@http://localhost:3010/remoteEntry.js',
           tailwindUI: 'tailwindComponents@http://localhost:3012/remoteEntry.js',
+          uiComponents: 'uiComponents@http://localhost:3011/remoteEntry.js',
         },
-        exposes: {},
+        exposes: {
+          './CartApp': './src/App.tsx',
+        },
         shared: {
           react: {
             requiredVersion: packageJson.dependencies.react,

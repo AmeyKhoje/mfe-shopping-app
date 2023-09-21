@@ -1,11 +1,4 @@
-import {
-  Box,
-  Container,
-  Flex,
-  Image,
-  Link,
-  SimpleGrid,
-} from '@chakra-ui/react';
+import { Box, Container, Flex } from '@chakra-ui/react';
 import Logo from 'src/images/logo-shop-easy.png';
 import { COLOR_PALETTE } from 'src/global/js-constants/Theme';
 import NavLink from './NavLink';
@@ -22,6 +15,9 @@ const Navbar = ({
   isProfile?: boolean;
   onLogout: () => void;
 }) => {
+  const pathName = window.location.pathname.split('/')[1];
+  console.log(pathName);
+
   return (
     <Box
       position={'fixed'}
@@ -60,8 +56,14 @@ const Navbar = ({
             <Flex alignItems={'center'}>
               {navbarLinks?.map((link) => (
                 <Box
-                  paddingRight={'2.5rem'}
-                  _last={{ paddingRight: isProfile ? '1rem' : 0 }}
+                  borderBottom={
+                    link?.to?.split('/')[1] === pathName
+                      ? '0.5rem solid white'
+                      : 'none'
+                  }
+                  textAlign={'center'}
+                  marginRight={'2.5rem'}
+                  _last={{ marginRight: isProfile ? '1rem' : 0 }}
                   key={link.name}
                 >
                   <NavLink
@@ -71,6 +73,7 @@ const Navbar = ({
                       fontSize: '2.2rem',
                       fontFamily: `'Rubik', sans-serif`,
                     }}
+                    disabled={link?.to?.split('/')[1] === pathName}
                   />
                 </Box>
               ))}

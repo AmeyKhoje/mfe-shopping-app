@@ -7,13 +7,18 @@ const NavLink = ({
   name,
   styleProps,
   isUnderlined,
+  disabled,
 }: {
   to: string;
   name: string;
   styleProps?: object;
   isUnderlined?: boolean;
+  disabled?: boolean;
 }) => {
   const handleNavigate = () => {
+    if (disabled) {
+      return;
+    }
     navigateToRemote(to);
   };
 

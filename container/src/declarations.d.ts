@@ -19,6 +19,7 @@ declare module '*.png' {
 
 declare module 'auth/*';
 declare module 'shop/*';
+declare module 'cart/*';
 declare module 'utilityFunctions/*';
 declare module 'uiComponents/*';
 declare module 'providers/*';

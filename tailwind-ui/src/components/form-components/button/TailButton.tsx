@@ -4,6 +4,7 @@ import { getIcon } from 'src/utils/Icons';
 import {
   buttonSizes,
   buttonVariants,
+  fontSizes,
   iconSize,
   roundedSizes,
   textColor,
@@ -57,7 +58,11 @@ const TailButton = ({
         </div>
       )}
       <div className="w-100">
-        <p className="text-center">{title}</p>
+        <p
+          className={`text-center ${fontSizes[size]}`}
+        >
+          {title}
+        </p>
       </div>
       {!!icon && icon.position === 'right' && (
         <div className="ml-1">

@@ -11,9 +11,9 @@ if (rootElement) {
 
   root.render(
     <StrictMode>
-      {/* <BrowserRouter basename="/cart"> */}
-      <App />
-      {/* </BrowserRouter> */}
+      <BrowserRouter basename="/cart">
+        <App />
+      </BrowserRouter>
     </StrictMode>
   );
 }

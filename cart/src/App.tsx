@@ -1,13 +1,7 @@
-// import 'assets/styles/style.scss';
-import { TailButton, TailCheckbox } from 'tailwindUI/components';
-import { CartPage } from 'tailwindUI/pages';
+import AppRouter from './router';
 
 const App = () => {
-  return (
-    <div>
-      <CartPage />
-    </div>
-  );
+  return <AppRouter />;
 };
 
 export default App;

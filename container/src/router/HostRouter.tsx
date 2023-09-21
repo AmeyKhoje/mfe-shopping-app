@@ -5,6 +5,7 @@ import { ProtectedRoute } from 'uiComponents/security';
 
 const RemoteOneApp = lazy(() => import('auth/AuthApp'));
 const RemoteTwoApp = lazy(() => import('shop/ShopApp'));
+const CartApp = lazy(() => import('cart/CartApp'));
 
 const HostRouter = () => {
   return (
@@ -29,6 +30,17 @@ const HostRouter = () => {
             <ProtectedRoute>
               <Suspense fallback={<AppLoadingFallback appName={'Shop'} />}>
                 <RemoteTwoApp />
+              </Suspense>
+            </ProtectedRoute>
+          }
+        />
+
+        <Route
+          path="/cart/*"
+          element={
+            <ProtectedRoute>
+              <Suspense fallback={<AppLoadingFallback appName={'Cart'} />}>
+                <CartApp />
               </Suspense>
             </ProtectedRoute>
           }
