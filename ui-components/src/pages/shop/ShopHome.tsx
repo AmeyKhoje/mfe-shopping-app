@@ -1,9 +1,9 @@
 import { Container, Flex, SimpleGrid } from '@chakra-ui/react';
 import ProductCard from 'src/components/ui-elements/shop/product-card/ProductCard';
 
-const ShopHome = ({ products }: any) => {
+const ShopHome = ({ products, productAction }: any) => {
   const action = (id: string, count: number) => {
-    console.log(id, count);
+    productAction(id, count);
   };
 
   return (

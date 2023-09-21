@@ -18,7 +18,10 @@ const userSlice = createSlice({
       state: UserSliceInterface,
       action: PayloadAction<yup.AnyObject>
     ) => {
-      state.user = action.payload;
+      return {
+        ...state,
+        user: action.payload,
+      };
     },
   },
 });

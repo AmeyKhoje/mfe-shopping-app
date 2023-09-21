@@ -43,11 +43,11 @@ const ProductCard = memo(
       return count;
     }, [count]);
 
-    const actionHandlerInner = useCallback((id: string, count: number) => {
+    const actionHandlerInner = (id: string, count: number) => {
       console.log('here', id, count);
 
       actionHandler(id, count);
-    }, []);
+    };
 
     return (
       <productCardContext.Provider
