@@ -17,6 +17,7 @@ const ShopHome = ({ products, productAction }: any) => {
             originalPrice={item?.originalPrice}
             key={`${item?.id}_${item?.title}`}
             id={item?.id}
+            count={item?.count}
             actionHandler={action}
           />
         ))}

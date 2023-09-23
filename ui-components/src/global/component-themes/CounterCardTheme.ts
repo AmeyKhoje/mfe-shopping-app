@@ -60,6 +60,8 @@ const baseStyle = definePartsStyle({
   counterButtonContainer: {
     width: '4.5rem',
     height: '4.5rem',
+    display: 'flex',
+    alignItems: 'center',
   },
 });
 

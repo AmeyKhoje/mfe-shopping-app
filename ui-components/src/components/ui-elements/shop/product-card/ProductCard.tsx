@@ -43,11 +43,11 @@ const ProductCard = memo(
       return count;
     }, [count]);
 
-    const actionHandlerInner = (id: string, count: number) => {
-      console.log('here', id, count);
-
-      actionHandler(id, count);
+    const actionHandlerInner = (id: string, newCount: number) => {
+      actionHandler(id, newCount);
     };
+
+    console.log('count', memoizedCount);
 
     return (
       <productCardContext.Provider

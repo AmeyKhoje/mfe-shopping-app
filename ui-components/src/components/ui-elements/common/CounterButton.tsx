@@ -18,26 +18,30 @@ const CounterButton = ({
     return count;
   }, [count]);
 
-  const handleCounterAction = () => {
+  const handleAdd = () => {
     handleAction(memoizedCount + 1);
+  };
+
+  const handleRemove = () => {
+    handleAction(memoizedCount - 1);
   };
 
   return (
     <Box>
       {!memoizedCount ? (
-        <Button __css={styles.button} onClick={handleCounterAction}>
+        <Button __css={styles.button} onClick={handleAdd}>
           {title}
         </Button>
       ) : (
         <Flex alignItems={'center'} width={'100%'}>
           <Box __css={styles.countDisplay}>{memoizedCount}</Box>
           <Box __css={styles.counterButtonContainer} mr={'1rem'}>
-            <Button __css={styles.counterButton} onClick={handleCounterAction}>
+            <Button __css={styles.counterButton} onClick={handleRemove}>
               <MinusIcon width={'1.5rem'} height={'1.5rem'} color={'inherit'} />
             </Button>
           </Box>
           <Box __css={styles.counterButtonContainer}>
-            <Button __css={styles.counterButton} onClick={handleCounterAction}>
+            <Button __css={styles.counterButton} onClick={handleAdd}>
               <AddIcon width={'1.5rem'} height={'1.5rem'} color={'inherit'} />
             </Button>
           </Box>

@@ -71,13 +71,20 @@ export const cartApi = createApi({
       },
     }),
     createNewCart: builder.query({
-      async queryFn({ cart }) {
+      async queryFn(payload, { dispatch }) {
+        console.log('PAYLOADCART', payload.cart);
+
         try {
           const ref = collection(db, 'carts');
           const snapshot = await addDoc(ref, {
-            ...cart,
+            ...payload?.cart,
           });
           if (snapshot.id) {
+            dispatch(
+              cartApi.endpoints.getCart.initiate(payload.cart?.userId, {
+                forceRefetch: true,
+              })
+            );
             return {
               data: true,
             };
@@ -92,8 +99,12 @@ export const cartApi = createApi({
       async queryFn(payload, { getState, dispatch }) {
         try {
           const state: any = getState();
-          if (state.cart) {
-            const ref = doc(db, 'carts', state.cart?.id || state.cart?.uid);
+          if (state.cart?.cart) {
+            const ref = doc(
+              db,
+              'carts',
+              state?.cart?.cart?.id || state?.cart?.cart?.uid
+            );
             await updateDoc(ref, {
               ...payload,
             });
@@ -108,6 +119,8 @@ export const cartApi = createApi({
               data: true,
             };
           } else {
+            console.log('here');
+
             dispatch(
               cartApi.endpoints.createNewCart.initiate(
                 { cart: payload },
@@ -125,6 +138,8 @@ export const cartApi = createApi({
     }),
     triggerCartAction: builder.query({
       async queryFn({ dbCart, newCart }, { dispatch }) {
+        console.log(dbCart, newCart);
+
         if (dbCart) {
           dispatch(
             cartApi.endpoints.updateCart.initiate(newCart, {
@@ -150,7 +165,10 @@ export const cartApi = createApi({
 export const {
   useCheckCartQuery,
   useGetCartQuery,
+  useTriggerCartActionQuery,
   useLazyTriggerCartActionQuery,
+  useLazyGetCartQuery,
+  useLazyCreateNewCartQuery,
 } = cartApi;
 
 export const {

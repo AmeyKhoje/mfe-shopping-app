@@ -8,30 +8,12 @@ type TSelfProps = {
 };
 
 const useCartConstructor = ({ cart, userId }: TSelfProps) => {
-  const [innerCart, setInnerCart] = useState<TCart | null>(null);
-  const [innerUserId, setInnerUserId] = useState('');
   const memoizedCart = useMemo(() => {
-    if (cart) {
-      setInnerCart(cart);
-    } else return null;
+    return cart;
   }, [cart]);
 
-  // const memoizedUserId = useMemo(() => {
-  //   return userId;
-  // }, [userId]);
-
-  // useEffect(() => {
-  //   setInnerUserId(userId);
-  // }, [userId]);
-
-  // console.log(memoizedUserId);
-
   const getCart = (id: string, count: number) => {
-    // console.log(userId);
-
     if (!memoizedCart) {
-      // console.log(memoizedUserId);
-
       return new Cart([{ productId: id, count: count }], userId);
     }
     if (count <= 0) {
@@ -42,7 +24,8 @@ const useCartConstructor = ({ cart, userId }: TSelfProps) => {
     }
     if (cart) {
       const isExists = cart?.items.findIndex((item) => item.productId === id);
-      if (isExists) {
+
+      if (isExists >= 0) {
         const cartItems =
           cart?.items.map((item) => ({
             ...item,
@@ -50,8 +33,7 @@ const useCartConstructor = ({ cart, userId }: TSelfProps) => {
           })) || [];
         return new Cart(cartItems, userId);
       } else {
-        const cartItemsCopy = cart?.items;
-        cartItemsCopy?.push({ productId: id, count });
+        const cartItemsCopy = [...cart?.items, { productId: id, count }];
         return new Cart(cartItemsCopy || [], userId);
       }
     }
