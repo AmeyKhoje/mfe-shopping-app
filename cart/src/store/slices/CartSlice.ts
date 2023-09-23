@@ -1,56 +1,38 @@
-import { AnyAction, createSlice } from '@reduxjs/toolkit';
+import { ActionReducerMapBuilder, createSlice } from '@reduxjs/toolkit';
+import { AnyObject } from 'yup';
 import { cartApi } from '../services/CartService';
 
 type TCartSlice = {
-  cartList: any[];
-  checkoutDetails: {
-    subtotal: number;
-    discount: number;
-    grandTotal: number;
-  };
-  isLoading: boolean;
-  isError: boolean;
+  cart: AnyObject;
 };
 
 const initialState: TCartSlice = {
-  cartList: [],
-  checkoutDetails: {
-    discount: 0,
-    grandTotal: 0,
-    subtotal: 0,
-  },
-  isLoading: false,
-  isError: false,
+  cart: {},
 };
 
 const cartSlice = createSlice({
   initialState,
   name: 'cart',
   reducers: {},
-  extraReducers(builder) {
+  extraReducers: (builder: ActionReducerMapBuilder<TCartSlice>) => {
     builder
-      .addMatcher(
-        cartApi.endpoints.getCart.matchPending,
-        (state, action: any) => {
-          return {
-            ...state,
-            isLoading: true,
-          };
-        }
-      )
-      .addMatcher(
-        cartApi.endpoints.getCart.matchFulfilled,
-        (state, action: AnyAction) => {
-          return {
-            ...state,
-            cartList: action?.payload?.data || action.payload,
-            isLoading: false,
-          };
-        }
-      )
-      .addMatcher(cartApi.endpoints.getCart.matchRejected, (state, action) => {
+      .addMatcher(cartApi.endpoints.getCart.matchPending, (state, action) => {
         return {
           ...state,
+          isLoading: true,
+        };
+      })
+      .addMatcher(cartApi.endpoints.getCart.matchFulfilled, (state, action) => {
+        return {
+          ...state,
+          cart: action.payload,
+          isError: false,
+        };
+      })
+      .addMatcher(cartApi.endpoints.getCart.matchFulfilled, (state, action) => {
+        return {
+          ...state,
+          isLoading: false,
           isError: true,
         };
       });

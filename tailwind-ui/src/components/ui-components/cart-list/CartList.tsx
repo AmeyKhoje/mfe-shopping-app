@@ -3,7 +3,7 @@ import CartListHeader from './CartListHeader';
 import CartListRow from './CartListRow';
 import { TrashIcon } from '@heroicons/react/24/outline';
 
-const CartList = () => {
+const CartList = ({ cartList }: any) => {
   return (
     <div className="w-100">
       <div className="flex items-center justify-between pb-3">
@@ -22,11 +22,10 @@ const CartList = () => {
         </div>
       </div>
       <CartListHeader />
-      <CartListRow />
-      <CartListRow />
-      <CartListRow />
-      <CartListRow />
-      <CartListRow />
+      {cartList?.length &&
+        cartList.map((item: any) => (
+          <CartListRow item={item} />
+        ))}
     </div>
   );
 };

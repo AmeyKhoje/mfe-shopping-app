@@ -1,4 +1,14 @@
-import { addDoc, collection, getDocs, query } from 'firebase/firestore';
+import {
+  DocumentReference,
+  FieldPath,
+  addDoc,
+  collection,
+  documentId,
+  getDoc,
+  getDocs,
+  query,
+  where,
+} from 'firebase/firestore';
 import { Events } from 'utilityFunctions/constants';
 import { db } from './Config';
 import { ProductModel } from 'src/schemas/ProductSchema';
@@ -83,3 +93,28 @@ export const getAllProducts = () =>
         );
       });
   });
+
+export const getPopulatedCart = async (cart: any) => {
+  const items: any = [];
+  const q = query(
+    collection(db, 'products'),
+    where(documentId(), 'in', [...cart?.items?.map((c: any) => c?.productId)])
+  );
+
+  const docs = await getDocs(q);
+
+  docs.docs.forEach((d: any) => {
+    const data = d.data();
+
+    items.push({
+      ...data,
+      count: cart.items.find((c: any) => c.productId === d.id).count,
+      productId: d.id,
+    });
+  });
+
+  return {
+    ...cart,
+    items,
+  };
+};

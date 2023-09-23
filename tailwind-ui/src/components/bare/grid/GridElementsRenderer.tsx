@@ -8,8 +8,13 @@ import GridContext from 'src/context/GridContext';
 import GridElement from './GridElement';
 
 const GridElementsRenderer = () => {
-  const { divideBy, elements, gutterSpace } =
-    useContext(GridContext);
+  const {
+    divideBy,
+    elements,
+    gutterSpace,
+    componentProps,
+  } = useContext(GridContext);
+
   let ct = 0;
   return elements.map((item, index) => {
     let position: string | null =
@@ -23,6 +28,7 @@ const GridElementsRenderer = () => {
       children: ReactNode;
       customStyle: any;
       key: string;
+      custom: any;
     }>(GridElement as FC, {
       key:
         item?.element?.toLocaleString() +
@@ -42,8 +48,12 @@ const GridElementsRenderer = () => {
           : `${gutterSpace / 2}rem`,
       },
       children: item.element,
+      custom: componentProps
+        ? componentProps[index]
+        : {},
     });
     ++ct;
+
     return element;
   });
 };

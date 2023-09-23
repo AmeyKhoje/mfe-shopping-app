@@ -1,18 +1,26 @@
-import { ReactElement, ReactNode } from 'react';
+import {
+  ReactElement,
+  ReactNode,
+  cloneElement,
+} from 'react';
 
 const GridElement = ({
   children,
   customStyle,
+  custom,
 }: {
-  children: ReactNode;
+  children: any;
   customStyle: any;
+  custom: any;
 }) => {
+  const renderChildren = () =>
+    cloneElement(children, { ...custom });
   return (
     <div
       className="grid-element"
       style={customStyle}
     >
-      {children}
+      {renderChildren()}
     </div>
   );
 };

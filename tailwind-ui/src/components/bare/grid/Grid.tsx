@@ -15,12 +15,14 @@ type SelfProps = {
   gutterSpace: number;
   divideBy: Array<number>;
   elements: Array<ReactNode>;
+  componentProps?: Array<any>;
 };
 
 const Grid = ({
   divideBy,
   gutterSpace,
   elements,
+  componentProps,
 }: SelfProps) => {
   if (!elements?.length || !divideBy?.length) {
     return <>Provide data</>;
@@ -40,7 +42,10 @@ const Grid = ({
     element: ReactNode;
   }[] = useMemo(() => {
     return getElements(elements, divideBy);
-  }, [elements.toString()]);
+  }, [
+    elements.toString(),
+    componentProps?.toString(),
+  ]);
 
   return (
     <GridContext.Provider
@@ -48,6 +53,7 @@ const Grid = ({
         divideBy,
         elements: memoizedElements,
         gutterSpace,
+        componentProps,
       }}
     >
       <GridInner />

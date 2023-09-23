@@ -17,8 +17,12 @@ export const createCustomStore = (options?: any) => {
       cart: CartSlice,
     },
     middleware: (getDefaultMiddleware) => [
-      ...getDefaultMiddleware().concat(productsApi.middleware, logger),
-      ...getDefaultMiddleware().concat(cartApi.middleware, logger),
+      ...getDefaultMiddleware({
+        serializableCheck: false,
+      }).concat(productsApi.middleware, logger),
+      ...getDefaultMiddleware({
+        serializableCheck: false,
+      }).concat(cartApi.middleware, logger),
     ],
     ...options,
   });

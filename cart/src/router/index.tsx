@@ -7,6 +7,7 @@ import { collection, getDocs, query, where } from 'firebase/firestore';
 import { useCustomDispatch } from 'src/store';
 import { setUser } from 'src/store/slices/UserSlice';
 import moment from 'moment-mini';
+import CartPageSelf from 'src/remotes/CartPageSelf';
 
 const AppRouter = () => {
   const dispatch = useCustomDispatch();
@@ -45,7 +46,7 @@ const AppRouter = () => {
           <ShopLayout navbarLinks={NAVBAR_LINKS} onLogout={handleLogout} />
         }
       >
-        <Route path="/" element={<CartPage />} />
+        <Route path="/" element={<CartPageSelf />} />
       </Route>
     </Routes>
   );

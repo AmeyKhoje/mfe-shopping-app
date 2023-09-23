@@ -8,8 +8,6 @@ const ActionBox = () => {
   const { count, actionHandler, id } = useContext(productCardContext);
 
   const handleAction = (latestCount: number) => {
-    console.log(latestCount);
-
     actionHandler(id, latestCount);
   };
 

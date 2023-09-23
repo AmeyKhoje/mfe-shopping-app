@@ -7,7 +7,6 @@ const rootElement = document.getElementById('mfe-remote-2');
 
 if (rootElement) {
   const root = createRoot(rootElement);
-  console.log(root);
 
   root.render(
     <StrictMode>

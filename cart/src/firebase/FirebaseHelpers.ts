@@ -5,6 +5,15 @@
 // import ApiResponse, { ApiResponseInterface } from 'src/models/ApiResponse';
 // import { registerEvent } from 'src/custom-events/CustomEvent';
 
+import {
+  collection,
+  documentId,
+  getDocs,
+  query,
+  where,
+} from 'firebase/firestore';
+import { db } from './Config';
+
 // export const addProduct = (
 //   product: ProductModel,
 //   userId: string,
@@ -83,3 +92,28 @@
 //         );
 //       });
 //   });
+
+export const getPopulatedCart = async (cart: any) => {
+  const items: any = [];
+  const q = query(
+    collection(db, 'products'),
+    where(documentId(), 'in', [...cart?.items?.map((c: any) => c?.productId)])
+  );
+
+  const docs = await getDocs(q);
+
+  docs.docs.forEach((d: any) => {
+    const data = d.data();
+
+    items.push({
+      ...data,
+      count: cart.items.find((c: any) => c.productId === d.id).count,
+      productId: d.id,
+    });
+  });
+
+  return {
+    ...cart,
+    items,
+  };
+};

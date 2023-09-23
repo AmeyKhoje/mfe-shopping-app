@@ -7,7 +7,6 @@ const rootElement = document.getElementById('cart-app');
 
 if (rootElement) {
   const root = createRoot(rootElement);
-  console.log(root);
 
   root.render(
     <StrictMode>

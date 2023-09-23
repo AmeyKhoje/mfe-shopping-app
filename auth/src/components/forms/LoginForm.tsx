@@ -19,8 +19,6 @@ const LoginForm = () => {
   const navigate = useNavigate();
 
   const handleLogin = async (data: any) => {
-    console.log(data);
-
     login(data?.email, data?.password)
       .then((response: ApiResponseModel) => {
         if (!!response.status) {

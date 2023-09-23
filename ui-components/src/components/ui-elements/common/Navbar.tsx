@@ -16,7 +16,6 @@ const Navbar = ({
   onLogout: () => void;
 }) => {
   const pathName = window.location.pathname.split('/')[1];
-  console.log(pathName);
 
   return (
     <Box

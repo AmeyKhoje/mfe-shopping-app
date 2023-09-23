@@ -52,10 +52,7 @@ const ShopHome = () => {
   }, [products?.toString(), cart]);
 
   const productAction = (id: string, count: number) => {
-    console.log(count);
-
     const newCart = getCart(id, count);
-    console.log(newCart);
 
     cartActionTrigger({ dbCart: cart?.cart, newCart });
   };

@@ -47,8 +47,6 @@ const ProductCard = memo(
       actionHandler(id, newCount);
     };
 
-    console.log('count', memoizedCount);
-
     return (
       <productCardContext.Provider
         value={{

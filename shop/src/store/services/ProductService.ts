@@ -17,15 +17,12 @@ export const productsApi = createApi({
           });
           return { data };
         } catch (error: any) {
-          console.log('Error');
           return { error: error?.message };
         }
       },
     }),
     addProduct: builder.query({
       async queryFn(payload, { dispatch }) {
-        console.log(payload);
-
         try {
           const ref = collection(db, 'products');
           const snapshot = await addDoc(ref, {
@@ -45,7 +42,6 @@ export const productsApi = createApi({
           }
           return { error: 'Error' };
         } catch (error) {
-          console.log('Error');
           return { error: 'Error' };
         }
       },

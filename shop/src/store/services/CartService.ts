@@ -1,14 +1,17 @@
 import { createApi, fakeBaseQuery } from '@reduxjs/toolkit/dist/query/react';
 import {
+  DocumentReference,
   addDoc,
   collection,
   doc,
+  getDoc,
   getDocs,
   query,
   updateDoc,
   where,
 } from 'firebase/firestore';
 import { db } from 'src/firebase/Config';
+import { getPopulatedCart } from 'src/firebase/FirebaseHelpers';
 
 export const cartApi = createApi({
   baseQuery: fakeBaseQuery(),
@@ -56,9 +59,12 @@ export const cartApi = createApi({
             };
           } else {
             let data: any = {};
-            snapshot.forEach((document) => {
-              data = { ...document.data(), id: document.id };
-            });
+            let cart = { ...snapshot.docs[0].data(), id: snapshot.docs[0].id };
+
+            const populatedCart = await getPopulatedCart(cart);
+            data = {
+              ...populatedCart,
+            };
             return {
               data,
             };
@@ -72,12 +78,19 @@ export const cartApi = createApi({
     }),
     createNewCart: builder.query({
       async queryFn(payload, { dispatch }) {
-        console.log('PAYLOADCART', payload.cart);
-
         try {
+          const productRefString = (refId: string) =>
+            doc(db, 'products', refId);
+
           const ref = collection(db, 'carts');
           const snapshot = await addDoc(ref, {
             ...payload?.cart,
+            items: payload?.cart?.items.map((item: any) => {
+              return {
+                ...item,
+                product: productRefString(item?.productId),
+              };
+            }),
           });
           if (snapshot.id) {
             dispatch(
@@ -99,6 +112,7 @@ export const cartApi = createApi({
       async queryFn(payload, { getState, dispatch }) {
         try {
           const state: any = getState();
+
           if (state.cart?.cart) {
             const ref = doc(
               db,
@@ -119,8 +133,6 @@ export const cartApi = createApi({
               data: true,
             };
           } else {
-            console.log('here');
-
             dispatch(
               cartApi.endpoints.createNewCart.initiate(
                 { cart: payload },
@@ -138,8 +150,6 @@ export const cartApi = createApi({
     }),
     triggerCartAction: builder.query({
       async queryFn({ dbCart, newCart }, { dispatch }) {
-        console.log(dbCart, newCart);
-
         if (dbCart) {
           dispatch(
             cartApi.endpoints.updateCart.initiate(newCart, {
