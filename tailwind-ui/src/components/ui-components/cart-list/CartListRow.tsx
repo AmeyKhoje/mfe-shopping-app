@@ -5,20 +5,36 @@ import TailCounter from '../counter/TailContainer';
 import { TrashIcon } from '@heroicons/react/24/outline';
 import CartListProduct from './CartListProduct';
 
-const CartListRow = () => {
+const CartListRow = ({
+  item,
+  handleAction,
+}: any) => {
+  console.log(item);
+
+  const handleIncrement = () =>
+    handleAction(
+      item?.productId,
+      item?.count + 1,
+    );
+  const handleDecrement = () =>
+    handleAction(
+      item?.productId,
+      item?.count - 1,
+    );
+
   return (
     <TableFlex>
       <div className="w-5pc border-sm border-l-none border-t-none border-r-none flex items-center justify-center border-accent-black-border">
         <Checkbox />
       </div>
       <div className="w-51pc border-sm border-l-none p-3 border-t-none border-r-none flex items-center border-accent-black-border">
-        <CartListProduct />
+        <CartListProduct item={item} />
       </div>
       <div className="w-22pc border-sm border-l-none border-t-none border-r-none flex items-center  flex-col p-3 border-accent-black-border">
         <TailCounter
-          count={0}
-          handleDecrement={() => {}}
-          handleIncrement={() => {}}
+          count={item?.count}
+          handleDecrement={handleDecrement}
+          handleIncrement={handleIncrement}
         />
         <button className="flex items-center p-0.5 hover:bg-light transition-all duration-200 rounded-sm mt-1">
           <TrashIcon width={'2rem'} />

@@ -12,6 +12,7 @@ import {
 } from 'firebase/firestore';
 import { db } from 'src/firebase/Config';
 import { getPopulatedCart } from 'src/firebase/FirebaseHelpers';
+import { getCheckoutDetails } from 'src/utils/Helpers';
 
 export const cartApi = createApi({
   baseQuery: fakeBaseQuery(),
@@ -62,8 +63,10 @@ export const cartApi = createApi({
             let cart = { ...snapshot.docs[0].data(), id: snapshot.docs[0].id };
 
             const populatedCart = await getPopulatedCart(cart);
+
             data = {
-              ...populatedCart,
+              cart: { ...populatedCart },
+              checkout: getCheckoutDetails(populatedCart),
             };
             return {
               data,

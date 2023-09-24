@@ -1,6 +1,6 @@
 import CSSProvider from 'src/hoc/CSSProvider';
 
-const CartListItem = () => {
+const CartListItem = ({ item }: any) => {
   return (
     <div className="w-100 flex items-start">
       <div className="w-14 mr-2">
@@ -13,12 +13,14 @@ const CartListItem = () => {
       <div>
         <div className="">
           <h4 className="text-md font-medium text-primary font-rubik">
-            Ice cream{'(Flavoured)'}
+            {item?.title || ''}
           </h4>
         </div>
-        <span className="text-base font-rubik text-accent-text-1 font-medium">
-          Strawberry
-        </span>
+        {item?.description && (
+          <span className="text-base font-rubik text-accent-text-1 font-medium">
+            {item?.description}
+          </span>
+        )}
       </div>
     </div>
   );

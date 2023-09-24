@@ -17,7 +17,14 @@ const CartPageSelf = () => {
     }
   }, [user?.user?.uid]);
 
-  return <CartPage list={cartList} />;
+  return (
+    <CartPage
+      list={cartList}
+      handleAction={(id: string, count: number) => {
+        console.log(id, count);
+      }}
+    />
+  );
 };
 
 export default CartPageSelf;

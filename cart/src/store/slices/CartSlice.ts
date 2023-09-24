@@ -25,7 +25,8 @@ const cartSlice = createSlice({
       .addMatcher(cartApi.endpoints.getCart.matchFulfilled, (state, action) => {
         return {
           ...state,
-          cart: action.payload,
+          cart: action.payload.cart,
+          checkout: action.payload.checkout,
           isError: false,
         };
       })

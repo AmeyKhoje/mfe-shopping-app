@@ -7,6 +7,7 @@ import {
   getFromLocalStorage,
   remoteFromLocalStorage,
 } from './LocalStorage';
+import { getNumber, formatNumber } from './TypeHelpers';
 
 export {
   convertToTime,
@@ -17,4 +18,6 @@ export {
   clearLocalStorage,
   getFromLocalStorage,
   remoteFromLocalStorage,
+  getNumber,
+  formatNumber,
 };
