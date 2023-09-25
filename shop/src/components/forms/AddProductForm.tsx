@@ -44,7 +44,7 @@ const AddProductForm = ({ control }: { control: Control }) => {
         />
       ))}
 
-      <CustomSelect
+      {/* <CustomSelect
         list={CATEGORIES}
         isMultiSelect
         handleChange={(item: any) => console.log('ITEM', item)}
@@ -55,7 +55,7 @@ const AddProductForm = ({ control }: { control: Control }) => {
           Product Image
         </Typography>
         <FilePicker path={file} onChange={handleImageChange} />
-      </FormFieldContainer>
+      </FormFieldContainer> */}
     </>
   );
 };
