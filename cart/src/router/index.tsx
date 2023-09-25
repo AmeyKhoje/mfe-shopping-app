@@ -1,6 +1,5 @@
 import { Route, Routes } from 'react-router-dom';
 import { ShopLayout } from 'uiComponents/layouts';
-import { CartPage } from 'tailwindUI/pages';
 import { NAVBAR_LINKS } from 'src/utils/Constants';
 import { auth, db } from 'src/firebase/Config';
 import { collection, getDocs, query, where } from 'firebase/firestore';
@@ -8,6 +7,8 @@ import { useCustomDispatch } from 'src/store';
 import { setUser } from 'src/store/slices/UserSlice';
 import moment from 'moment-mini';
 import CartPageSelf from 'src/remotes/CartPageSelf';
+import { registerEvent } from 'src/custom-events/CustomEvent';
+import { Events } from 'utilityFunctions/constants';
 
 const AppRouter = () => {
   const dispatch = useCustomDispatch();
@@ -35,6 +36,10 @@ const AppRouter = () => {
           handleLogout();
         }
       });
+    }
+    if (!user?.uid) {
+      const logoutEvent = registerEvent(Events.LOGOUT, {});
+      dispatchEvent(logoutEvent);
     }
   });
 

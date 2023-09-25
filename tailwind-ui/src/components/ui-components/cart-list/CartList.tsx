@@ -15,14 +15,14 @@ const CartList = ({
             Cart
           </p>
         </div>
-        <div className="w-50">
+        {/* <div className="w-50">
           <button className="flex items-center p-0.5 hover:bg-light transition-all duration-200 rounded-sm mt-1">
             <TrashIcon width={'2rem'} />
             <span className="text-sm font-rubik ml-0.5 font-medium">
               Remove
             </span>
           </button>
-        </div>
+        </div> */}
       </div>
       <CartListHeader />
       {cartList?.length &&

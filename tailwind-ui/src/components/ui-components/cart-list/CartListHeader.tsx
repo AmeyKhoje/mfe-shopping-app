@@ -5,9 +5,9 @@ import CSSProvider from 'src/hoc/CSSProvider';
 const CartListHeader = () => {
   return (
     <TableFlex>
-      <div className="w-5pc border-sm border-l-none border-t-none border-r-none h-5 flex items-center justify-center border-accent-black-border">
+      {/* <div className="w-5pc border-sm border-l-none border-t-none border-r-none h-5 flex items-center justify-center border-accent-black-border">
         <Checkbox />
-      </div>
+      </div> */}
       <div className="w-51pc border-sm border-l-none border-t-none border-r-none h-5 flex items-center pl-3 border-accent-black-border">
         <p className="text-base2 font-rubik text-accent-text-1  ">
           Product

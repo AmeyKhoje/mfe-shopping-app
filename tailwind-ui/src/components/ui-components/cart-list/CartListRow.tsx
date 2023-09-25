@@ -22,9 +22,9 @@ const CartListRow = ({
 
   return (
     <TableFlex>
-      <div className="w-5pc border-sm border-l-none border-t-none border-r-none flex items-center justify-center border-accent-black-border">
+      {/* <div className="w-5pc border-sm border-l-none border-t-none border-r-none flex items-center justify-center border-accent-black-border">
         <Checkbox />
-      </div>
+      </div> */}
       <div className="w-51pc border-sm border-l-none p-3 border-t-none border-r-none flex items-center border-accent-black-border">
         <CartListProduct item={item} />
       </div>
@@ -34,17 +34,23 @@ const CartListRow = ({
           handleDecrement={handleDecrement}
           handleIncrement={handleIncrement}
         />
-        <button className="flex items-center p-0.5 hover:bg-light transition-all duration-200 rounded-sm mt-1">
+        {/* <button className="flex items-center p-0.5 hover:bg-light transition-all duration-200 rounded-sm mt-1">
           <TrashIcon width={'2rem'} />
           <span className="text-sm font-rubik ml-0.5 font-medium">
             Remove
           </span>
-        </button>
+        </button> */}
       </div>
-      <div className="w-22pc border-sm border-l-none border-t-none border-r-none border-accent-black-border p-3 flex justify-end">
+      <div className="w-22pc border-sm border-l-none border-t-none border-r-none border-accent-black-border p-3 flex flex-col justify-start">
         <p className="text-base2 font-rubik text-black font-medium text-right   border-accent-black-border pl-1 w-100">
-          $2500.00
+          {item?.discountedPrice ||
+            item?.originalPrice}
         </p>
+        {item.discountedPrice && (
+          <p className="text-sm font-rubik text-accent-text-1 font-medium text-right line-through border-accent-black-border pl-1 w-100">
+            {item?.originalPrice}
+          </p>
+        )}
       </div>
     </TableFlex>
   );

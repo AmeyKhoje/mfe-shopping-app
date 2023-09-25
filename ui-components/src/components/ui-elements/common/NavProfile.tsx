@@ -62,7 +62,6 @@ const NavProfile = ({ onLogout }: { onLogout: () => void }) => {
               </Flex>
             </MenuButton>
             <MenuList __css={styles.list}>
-              <MenuItem __css={styles.item}>Profile</MenuItem>
               <MenuItem __css={styles.item} onClick={onLogout}>
                 Logout
               </MenuItem>

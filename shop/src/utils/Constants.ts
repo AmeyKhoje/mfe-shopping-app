@@ -7,10 +7,10 @@ export const NAVBAR_LINKS = [
     name: 'Cart',
     to: '/cart',
   },
-  {
-    name: 'Profile',
-    to: '/profile',
-  },
+  // {
+  //   name: 'Profile',
+  //   to: '/profile',
+  // },
 ];
 
 export const ADD_PRODUCT_FORM_FIELDS = [
