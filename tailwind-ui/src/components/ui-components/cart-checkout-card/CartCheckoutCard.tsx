@@ -1,6 +1,6 @@
 import { TailButton } from 'src/components/form-components';
 
-const CartCheckoutCard = () => {
+const CartCheckoutCard = ({ checkout }: any) => {
   return (
     <div className="w-100 relative select-none bg-white rounded-md border-accent-black border-sm">
       <div className="w-100 p-2">
@@ -12,7 +12,7 @@ const CartCheckoutCard = () => {
           </div>
           <div className="w-50pc">
             <p className="text-md font-rubik font-medium text-right">
-              $2500.00
+              {checkout?.subTotal}
             </p>
           </div>
         </div>
@@ -24,7 +24,7 @@ const CartCheckoutCard = () => {
           </div>
           <div className="w-50pc">
             <p className="text-md font-rubik font-medium text-right text-accent-black-border">
-              $0
+              {checkout?.discount}
             </p>
           </div>
         </div>
@@ -36,7 +36,7 @@ const CartCheckoutCard = () => {
           </div>
           <div className="w-50pc">
             <p className="text-md font-rubik font-medium text-right">
-              $2500.00
+              {checkout?.grandTotal}
             </p>
           </div>
         </div>

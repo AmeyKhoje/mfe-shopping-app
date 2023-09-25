@@ -9,8 +9,6 @@ const CartListRow = ({
   item,
   handleAction,
 }: any) => {
-  console.log(item);
-
   const handleIncrement = () =>
     handleAction(
       item?.productId,

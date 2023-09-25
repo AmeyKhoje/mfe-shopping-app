@@ -13,6 +13,8 @@ const GridElement = ({
   customStyle: any;
   custom: any;
 }) => {
+  console.log(custom);
+
   const renderChildren = () =>
     cloneElement(children, { ...custom });
   return (

@@ -32,7 +32,7 @@ const TailCounter = ({
         </div>
         <div className="w-1/3 flex items-center justify-center border-r-sm bg-white">
           <p className="text-base select-none">
-            1
+            {count}
           </p>
         </div>
         <div className="w-1/3">

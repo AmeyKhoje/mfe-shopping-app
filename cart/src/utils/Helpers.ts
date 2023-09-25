@@ -15,8 +15,10 @@ const getCheckoutDetails = (cart: any) => {
 
       finalCheckout = {
         ...finalCheckout,
-        subTotal: finalCheckout.subTotal + itemPrice,
-        discount: finalCheckout.discount + (itemPrice - itemDiscountedPrice),
+        subTotal: finalCheckout.subTotal + itemPrice * item.count,
+        discount:
+          finalCheckout.discount +
+          (itemPrice - itemDiscountedPrice) * item?.count,
       };
     });
 
